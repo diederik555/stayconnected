@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package fhd.stayconnected;
+package com.example.android.location;
 
 public final class R {
     public static final class attr {
@@ -182,24 +182,42 @@ containing a value of this type.
         public static final int ic_launcher=0x7f020018;
     }
     public static final class id {
-        public static final int action_settings=0x7f050007;
-        public static final int button1=0x7f050005;
+        public static final int address=0x7f05000a;
+        public static final int address_progress=0x7f050009;
+        public static final int get_address_button=0x7f05000f;
+        public static final int get_location_button=0x7f05000d;
         public static final int hybrid=0x7f050004;
+        public static final int label_address=0x7f050008;
+        public static final int label_lat_lng=0x7f050006;
+        public static final int lat_lng=0x7f050007;
+        public static final int main_layout=0x7f050005;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
         public static final int satellite=0x7f050002;
+        public static final int start_updates=0x7f05000e;
+        public static final int stop_updates=0x7f050010;
         public static final int terrain=0x7f050003;
-        public static final int textID=0x7f050006;
+        public static final int text_connection_state=0x7f05000c;
+        public static final int text_connection_status=0x7f05000b;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
     }
-    public static final class menu {
-        public static final int main=0x7f090000;
-    }
     public static final class string {
-        public static final int action_settings=0x7f060016;
-        public static final int app_name=0x7f060015;
+        public static final int IO_Exception_getFromLocation=0x7f060034;
+        /**  Menu title 
+         */
+        public static final int action_settings=0x7f060028;
+        public static final int address=0x7f06002a;
+        /**  User interface labels and strings 
+ Address format 
+         */
+        public static final int address_output_string=0x7f060026;
+        public static final int app_description=0x7f060025;
+        /**  Application identifiers 
+         */
+        public static final int app_name=0x7f060023;
+        public static final int app_tag=0x7f060024;
         /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=70] 
          */
         public static final int auth_client_availability_notification_title=0x7f06000f;
@@ -264,7 +282,37 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f06000e;
-        public static final int hello_world=0x7f060017;
+        /**  Messages 
+         */
+        public static final int connected=0x7f06002b;
+        public static final int connection_error_code=0x7f060015;
+        public static final int connection_error_code_unknown=0x7f06002c;
+        public static final int connection_error_disabled=0x7f060016;
+        public static final int connection_error_internal=0x7f060017;
+        public static final int connection_error_invalid=0x7f060018;
+        public static final int connection_error_invalid_account=0x7f060019;
+        public static final int connection_error_license_check_failed=0x7f06001a;
+        public static final int connection_error_message=0x7f06001b;
+        public static final int connection_error_misconfigured=0x7f06001c;
+        public static final int connection_error_missing=0x7f06001d;
+        public static final int connection_error_needs_resolution=0x7f06001e;
+        public static final int connection_error_network=0x7f06001f;
+        public static final int connection_error_outdated=0x7f060020;
+        public static final int connection_error_sign_in_required=0x7f060021;
+        public static final int connection_error_unknown=0x7f060022;
+        public static final int connection_failed=0x7f06002d;
+        public static final int disconnected=0x7f06002e;
+        public static final int get_address=0x7f06002f;
+        public static final int get_location=0x7f060030;
+        public static final int illegal_argument_exception=0x7f060031;
+        public static final int invalid_action=0x7f060032;
+        public static final int invalid_integer_id=0x7f060033;
+        /**  Latitude, longitude format 
+         */
+        public static final int latitude_longitude=0x7f060027;
+        /**  Labels 
+         */
+        public static final int latlng=0x7f060029;
         /**  Location client code resources (prefix with location_client) 
 
         Begin strings for location.reporting
@@ -276,6 +324,26 @@ containing a value of this type.
         public static final int location_client_ulr_inactive_age_under_13=0x7f060012;
         public static final int location_client_ulr_inactive_age_unknown=0x7f060013;
         public static final int location_client_ulr_inactive_unknown_restriction=0x7f060014;
+        public static final int location_requested=0x7f060035;
+        public static final int location_update_error=0x7f060037;
+        public static final int location_update_error_detail=0x7f060038;
+        public static final int location_update_missing_update=0x7f060039;
+        public static final int location_updated=0x7f060036;
+        public static final int location_updates_stopped=0x7f06003a;
+        public static final int log_new_location=0x7f06003b;
+        public static final int no_address_found=0x7f06003c;
+        public static final int no_connection=0x7f06003d;
+        public static final int no_geocoder_available=0x7f06003e;
+        public static final int no_location_available=0x7f06003f;
+        public static final int no_resolution=0x7f060041;
+        public static final int periodic_update_stop=0x7f060042;
+        public static final int play_services_available=0x7f060043;
+        public static final int request_location_updates_in_progress=0x7f060044;
+        public static final int resolved=0x7f060040;
+        public static final int start_updates=0x7f060045;
+        public static final int stop_updates=0x7f060046;
+        public static final int unknown=0x7f060047;
+        public static final int unknown_activity_request_code=0x7f060048;
     }
     public static final class style {
         /** 
@@ -312,20 +380,20 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #MapAttrs_cameraBearing fhd.stayconnected:cameraBearing}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraTargetLat fhd.stayconnected:cameraTargetLat}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraTargetLng fhd.stayconnected:cameraTargetLng}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraTilt fhd.stayconnected:cameraTilt}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraZoom fhd.stayconnected:cameraZoom}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_mapType fhd.stayconnected:mapType}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiCompass fhd.stayconnected:uiCompass}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiRotateGestures fhd.stayconnected:uiRotateGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiScrollGestures fhd.stayconnected:uiScrollGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiTiltGestures fhd.stayconnected:uiTiltGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiZoomControls fhd.stayconnected:uiZoomControls}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiZoomGestures fhd.stayconnected:uiZoomGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_useViewLifecycle fhd.stayconnected:useViewLifecycle}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_zOrderOnTop fhd.stayconnected:zOrderOnTop}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraBearing com.example.android.location:cameraBearing}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTargetLat com.example.android.location:cameraTargetLat}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTargetLng com.example.android.location:cameraTargetLng}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTilt com.example.android.location:cameraTilt}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraZoom com.example.android.location:cameraZoom}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_mapType com.example.android.location:mapType}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiCompass com.example.android.location:uiCompass}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiRotateGestures com.example.android.location:uiRotateGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiScrollGestures com.example.android.location:uiScrollGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiTiltGestures com.example.android.location:uiTiltGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiZoomControls com.example.android.location:uiZoomControls}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiZoomGestures com.example.android.location:uiZoomGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_useViewLifecycle com.example.android.location:useViewLifecycle}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_zOrderOnTop com.example.android.location:zOrderOnTop}</code></td><td></td></tr>
            </table>
            @see #MapAttrs_cameraBearing
            @see #MapAttrs_cameraTargetLat
@@ -349,7 +417,7 @@ containing a value of this type.
             0x7f01000c, 0x7f01000d
         };
         /**
-          <p>This symbol is the offset where the {@link fhd.stayconnected.R.attr#cameraBearing}
+          <p>This symbol is the offset where the {@link com.example.android.location.R.attr#cameraBearing}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -363,7 +431,7 @@ containing a value of this type.
         */
         public static final int MapAttrs_cameraBearing = 1;
         /**
-          <p>This symbol is the offset where the {@link fhd.stayconnected.R.attr#cameraTargetLat}
+          <p>This symbol is the offset where the {@link com.example.android.location.R.attr#cameraTargetLat}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -377,7 +445,7 @@ containing a value of this type.
         */
         public static final int MapAttrs_cameraTargetLat = 2;
         /**
-          <p>This symbol is the offset where the {@link fhd.stayconnected.R.attr#cameraTargetLng}
+          <p>This symbol is the offset where the {@link com.example.android.location.R.attr#cameraTargetLng}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -391,7 +459,7 @@ containing a value of this type.
         */
         public static final int MapAttrs_cameraTargetLng = 3;
         /**
-          <p>This symbol is the offset where the {@link fhd.stayconnected.R.attr#cameraTilt}
+          <p>This symbol is the offset where the {@link com.example.android.location.R.attr#cameraTilt}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -405,7 +473,7 @@ containing a value of this type.
         */
         public static final int MapAttrs_cameraTilt = 4;
         /**
-          <p>This symbol is the offset where the {@link fhd.stayconnected.R.attr#cameraZoom}
+          <p>This symbol is the offset where the {@link com.example.android.location.R.attr#cameraZoom}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -419,7 +487,7 @@ containing a value of this type.
         */
         public static final int MapAttrs_cameraZoom = 5;
         /**
-          <p>This symbol is the offset where the {@link fhd.stayconnected.R.attr#mapType}
+          <p>This symbol is the offset where the {@link com.example.android.location.R.attr#mapType}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -439,7 +507,7 @@ containing a value of this type.
         */
         public static final int MapAttrs_mapType = 0;
         /**
-          <p>This symbol is the offset where the {@link fhd.stayconnected.R.attr#uiCompass}
+          <p>This symbol is the offset where the {@link com.example.android.location.R.attr#uiCompass}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -453,7 +521,7 @@ containing a value of this type.
         */
         public static final int MapAttrs_uiCompass = 6;
         /**
-          <p>This symbol is the offset where the {@link fhd.stayconnected.R.attr#uiRotateGestures}
+          <p>This symbol is the offset where the {@link com.example.android.location.R.attr#uiRotateGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -467,7 +535,7 @@ containing a value of this type.
         */
         public static final int MapAttrs_uiRotateGestures = 7;
         /**
-          <p>This symbol is the offset where the {@link fhd.stayconnected.R.attr#uiScrollGestures}
+          <p>This symbol is the offset where the {@link com.example.android.location.R.attr#uiScrollGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -481,7 +549,7 @@ containing a value of this type.
         */
         public static final int MapAttrs_uiScrollGestures = 8;
         /**
-          <p>This symbol is the offset where the {@link fhd.stayconnected.R.attr#uiTiltGestures}
+          <p>This symbol is the offset where the {@link com.example.android.location.R.attr#uiTiltGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -495,7 +563,7 @@ containing a value of this type.
         */
         public static final int MapAttrs_uiTiltGestures = 9;
         /**
-          <p>This symbol is the offset where the {@link fhd.stayconnected.R.attr#uiZoomControls}
+          <p>This symbol is the offset where the {@link com.example.android.location.R.attr#uiZoomControls}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -509,7 +577,7 @@ containing a value of this type.
         */
         public static final int MapAttrs_uiZoomControls = 10;
         /**
-          <p>This symbol is the offset where the {@link fhd.stayconnected.R.attr#uiZoomGestures}
+          <p>This symbol is the offset where the {@link com.example.android.location.R.attr#uiZoomGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -523,7 +591,7 @@ containing a value of this type.
         */
         public static final int MapAttrs_uiZoomGestures = 11;
         /**
-          <p>This symbol is the offset where the {@link fhd.stayconnected.R.attr#useViewLifecycle}
+          <p>This symbol is the offset where the {@link com.example.android.location.R.attr#useViewLifecycle}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -537,7 +605,7 @@ containing a value of this type.
         */
         public static final int MapAttrs_useViewLifecycle = 12;
         /**
-          <p>This symbol is the offset where the {@link fhd.stayconnected.R.attr#zOrderOnTop}
+          <p>This symbol is the offset where the {@link com.example.android.location.R.attr#zOrderOnTop}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 

@@ -1,5 +1,5 @@
 /** Automatically generated file. DO NOT MODIFY */
-package fhd.stayconnected;
+package com.example.android.location;
 
 public final class BuildConfig {
     public final static boolean DEBUG = true;
