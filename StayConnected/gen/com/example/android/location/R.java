@@ -182,10 +182,13 @@ containing a value of this type.
         public static final int ic_launcher=0x7f020018;
     }
     public static final class id {
+        public static final int add=0x7f050013;
         public static final int address=0x7f05000a;
         public static final int address_progress=0x7f050009;
+        public static final int delete=0x7f050014;
         public static final int get_address_button=0x7f05000f;
         public static final int get_location_button=0x7f05000d;
+        public static final int group=0x7f050012;
         public static final int hybrid=0x7f050004;
         public static final int label_address=0x7f050008;
         public static final int label_lat_lng=0x7f050006;
@@ -193,6 +196,7 @@ containing a value of this type.
         public static final int main_layout=0x7f050005;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
+        public static final int read_database=0x7f050011;
         public static final int satellite=0x7f050002;
         public static final int start_updates=0x7f05000e;
         public static final int stop_updates=0x7f050010;
@@ -202,6 +206,7 @@ containing a value of this type.
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
+        public static final int main=0x7f030001;
     }
     public static final class string {
         public static final int IO_Exception_getFromLocation=0x7f060034;
@@ -301,9 +306,12 @@ containing a value of this type.
         public static final int connection_error_sign_in_required=0x7f060021;
         public static final int connection_error_unknown=0x7f060022;
         public static final int connection_failed=0x7f06002d;
+        public static final int delete=0x7f06004a;
         public static final int disconnected=0x7f06002e;
+        public static final int done=0x7f060049;
         public static final int get_address=0x7f06002f;
         public static final int get_location=0x7f060030;
+        public static final int hello=0x7f06004b;
         public static final int illegal_argument_exception=0x7f060031;
         public static final int invalid_action=0x7f060032;
         public static final int invalid_integer_id=0x7f060033;
@@ -338,6 +346,7 @@ containing a value of this type.
         public static final int no_resolution=0x7f060041;
         public static final int periodic_update_stop=0x7f060042;
         public static final int play_services_available=0x7f060043;
+        public static final int read_database=0x7f06004c;
         public static final int request_location_updates_in_progress=0x7f060044;
         public static final int resolved=0x7f060040;
         public static final int start_updates=0x7f060045;

@@ -17,26 +17,23 @@
 package com.example.android.location;
 
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesClient;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.location.LocationClient;
-import com.google.android.gms.location.LocationListener;
-import com.google.android.gms.location.LocationRequest;
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -45,9 +42,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesClient;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
 
 /**
  * This the app's main Activity. It provides buttons for requesting the various features of the
@@ -72,6 +72,8 @@ public class MainActivity extends FragmentActivity implements
 
     // Stores the current instantiation of the location client in this object
     private LocationClient mLocationClient;
+
+    private static final int REQUEST_CODE = 10;
 
     // Handles to UI widgets
     private TextView mLatLng;
@@ -136,7 +138,6 @@ public class MainActivity extends FragmentActivity implements
          * handle callbacks.
          */
         mLocationClient = new LocationClient(this, this, this);
-
     }
 
     /*
@@ -243,6 +244,13 @@ public class MainActivity extends FragmentActivity implements
 
                     break;
                 }
+            case REQUEST_CODE :
+            	if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
+                    if (intent.hasExtra("returnKey1")) {
+                      Toast.makeText(this, intent.getExtras().getString("returnKey1"),
+                          Toast.LENGTH_SHORT).show();
+                    }
+                  }
 
             // If any other request code was received
             default:
@@ -299,10 +307,20 @@ public class MainActivity extends FragmentActivity implements
 
             // Get the current location
             Location currentLocation = mLocationClient.getLastLocation();
+            
+            Intent i = new Intent(this, SaveActivity.class);
+            String location = currentLocation.toString();
+            i.putExtra("location", location);
+            this.startService(i);
 
             // Display the current location in the UI
             mLatLng.setText(LocationUtils.getLatLng(this, currentLocation));
         }
+    }
+    
+    public void readDatabase(View v) {
+    	Intent in = new Intent(this, DatabaseActivity.class);
+    	startActivityForResult(in, REQUEST_CODE);
     }
 
     /**
@@ -432,13 +450,18 @@ public class MainActivity extends FragmentActivity implements
      * @param location The updated location.
      */
     @Override
-    public void onLocationChanged(Location location) {
+    public void onLocationChanged(Location locations) {
 
         // Report to the UI that the location was updated
         mConnectionStatus.setText(R.string.location_updated);
+       
+        Intent i = new Intent(this, SaveActivity.class);
+        String location = locations.toString();
+        i.putExtra("location", location);
+        this.startService(i);
 
         // In the UI, set the latitude and longitude to the value received
-        mLatLng.setText(LocationUtils.getLatLng(this, location));
+        mLatLng.setText(LocationUtils.getLatLng(this, locations));
     }
 
     /**
