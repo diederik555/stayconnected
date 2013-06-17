@@ -15,7 +15,7 @@ public class CommentsDataSource {
   private SQLiteDatabase database;
   private MySQLiteHelper dbHelper;
   private String[] allColumns = { MySQLiteHelper.COLUMN_ID,
-      MySQLiteHelper.COLUMN_COMMENT };
+      MySQLiteHelper.COLUMN_LOCATION, MySQLiteHelper.COLUMN_ADDRESS };
 
   public CommentsDataSource(Context context) {
     dbHelper = new MySQLiteHelper(context);
@@ -29,9 +29,11 @@ public class CommentsDataSource {
     dbHelper.close();
   }
 
-  public Comment createComment(String comment) {
+  public Comment createComment(String location, String address) {
     ContentValues values = new ContentValues();
-    values.put(MySQLiteHelper.COLUMN_COMMENT, comment);
+    values.put(MySQLiteHelper.COLUMN_LOCATION, location);
+    values.put(MySQLiteHelper.COLUMN_ADDRESS, address);
+    
     long insertId = database.insert(MySQLiteHelper.TABLE_COMMENTS, null,
         values);
     Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,
@@ -71,6 +73,7 @@ public class CommentsDataSource {
     Comment comment = new Comment();
     comment.setId(cursor.getLong(0));
     comment.setComment(cursor.getString(1));
+    comment.setAdress(cursor.getString(2));
     return comment;
   }
 } 

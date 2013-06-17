@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 
 public class DatabaseActivity extends ListActivity {
   private CommentsDataSource datasource;
-  String location;
+  //String location, address;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class DatabaseActivity extends ListActivity {
       break;
     case R.id.delete:
       if (getListAdapter().getCount() > 0) {
-        comment = (Comment) getListAdapter().getItem(0);
+    	comment = (Comment) getListAdapter().getItem(0);
         datasource.deleteComment(comment);
         adapter.remove(comment);
       }

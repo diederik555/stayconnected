@@ -9,13 +9,13 @@ import android.widget.ArrayAdapter;
 
 public class SaveActivity extends Service {
   private CommentsDataSource datasource;
-  String location;
+  String location, address;
   
   @Override
   public int onStartCommand(Intent intent, int flags, int startId) {
     //TODO do something useful
 	location = (String) intent.getExtras().get("location");
-    //location = extras.getString("location");
+	address = (String) intent.getExtras().get("address");
 
     datasource = new CommentsDataSource(this);
     datasource.open();
@@ -26,7 +26,7 @@ public class SaveActivity extends Service {
             android.R.layout.simple_list_item_1, values);
     
     Comment comment = null;
-    comment = datasource.createComment(location);
+    comment = datasource.createComment(location, address);
     adapter.add(comment);
     adapter.notifyDataSetChanged();
 	  

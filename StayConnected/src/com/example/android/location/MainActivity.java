@@ -81,6 +81,7 @@ public class MainActivity extends FragmentActivity implements
     private ProgressBar mActivityIndicator;
     private TextView mConnectionState;
     private TextView mConnectionStatus;
+    private String sendAddress = null;
 
     // Handle to SharedPreferences for this app
     SharedPreferences mPrefs;
@@ -304,6 +305,8 @@ public class MainActivity extends FragmentActivity implements
 
         // If Google Play Services is available
         if (servicesConnected()) {
+            mActivityIndicator.setVisibility(View.VISIBLE);
+        	sendAddress = null;
 
             // Get the current location
             Location currentLocation = mLocationClient.getLastLocation();
@@ -311,6 +314,11 @@ public class MainActivity extends FragmentActivity implements
             Intent i = new Intent(this, SaveActivity.class);
             String location = currentLocation.toString();
             i.putExtra("location", location);
+            (new MainActivity.GetAddressTask(this)).execute(currentLocation);
+            while(sendAddress == null) {
+            	
+            }
+            i.putExtra("address", sendAddress);
             this.startService(i);
 
             // Display the current location in the UI
@@ -451,6 +459,8 @@ public class MainActivity extends FragmentActivity implements
      */
     @Override
     public void onLocationChanged(Location locations) {
+        mActivityIndicator.setVisibility(View.VISIBLE);
+    	sendAddress = null;
 
         // Report to the UI that the location was updated
         mConnectionStatus.setText(R.string.location_updated);
@@ -458,6 +468,11 @@ public class MainActivity extends FragmentActivity implements
         Intent i = new Intent(this, SaveActivity.class);
         String location = locations.toString();
         i.putExtra("location", location);
+        (new MainActivity.GetAddressTask(this)).execute(locations);
+        while(sendAddress == null) {
+        	
+        }
+        i.putExtra("address", sendAddress);
         this.startService(i);
 
         // In the UI, set the latitude and longitude to the value received
@@ -583,6 +598,8 @@ public class MainActivity extends FragmentActivity implements
                             // The country of the address
                             address.getCountryName()
                     );
+                    
+                    sendAddress = addressText;
 
                     // Return the text
                     return addressText;
@@ -599,7 +616,7 @@ public class MainActivity extends FragmentActivity implements
          */
         @Override
         protected void onPostExecute(String address) {
-
+        	
             // Turn off the progress bar
             mActivityIndicator.setVisibility(View.GONE);
 
