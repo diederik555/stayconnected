@@ -129,8 +129,8 @@ public class client implements Runnable{
         //wordt voor een verlengde tijd waarneembaar
         discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 0);
         context.startActivity(discoverableIntent);
-        //context.unregisterReceiver(mReceiver);
-        //myAdapter.cancelDiscovery();
+        context.unregisterReceiver(mReceiver);
+        myAdapter.cancelDiscovery();
         connect_to_server();
 	}
 }
