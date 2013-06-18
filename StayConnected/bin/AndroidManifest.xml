@@ -24,7 +24,9 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
     <application
         android:allowBackup="true"
@@ -50,6 +52,9 @@
             android:exported="false"></service>
         <service
 			  android:name="SaveActivity"
+			  android:icon="@string/app_name"></service> 
+		<service
+			  android:name="SendActivity"
 			  android:icon="@string/app_name"></service> 
     </application>
 

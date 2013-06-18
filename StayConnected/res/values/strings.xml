@@ -82,4 +82,5 @@
     <string name="delete">Delete First</string>
     <string name="hello">Hello</string>
     <string name="read_database">Read Database</string>
+    <string name="send_database">Send</string>
 </resources>

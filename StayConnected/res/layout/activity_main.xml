@@ -133,5 +133,15 @@
         android:gravity="center_vertical|center_horizontal"
         android:onClick="readDatabase"
         android:text="@string/read_database" />
+    
+    <Button
+        android:id="@+id/send_database"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/start_updates"
+        android:layout_below="@+id/read_database"
+        android:gravity="center_vertical|center_horizontal"
+        android:onClick="sendDatabase"
+        android:text="@string/send_database" />
 
 </RelativeLayout>

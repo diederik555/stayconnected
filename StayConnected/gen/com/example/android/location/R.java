@@ -24,18 +24,19 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int add=0x7f07000e;
+        public static final int add=0x7f07000f;
         public static final int address=0x7f070005;
         public static final int address_progress=0x7f070004;
-        public static final int delete=0x7f07000f;
+        public static final int delete=0x7f070010;
         public static final int get_address_button=0x7f07000a;
         public static final int get_location_button=0x7f070008;
-        public static final int group=0x7f07000d;
+        public static final int group=0x7f07000e;
         public static final int label_address=0x7f070003;
         public static final int label_lat_lng=0x7f070001;
         public static final int lat_lng=0x7f070002;
         public static final int main_layout=0x7f070000;
         public static final int read_database=0x7f07000c;
+        public static final int send_database=0x7f07000d;
         public static final int start_updates=0x7f070009;
         public static final int stop_updates=0x7f07000b;
         public static final int text_connection_state=0x7f070007;
@@ -111,6 +112,7 @@ public final class R {
         public static final int read_database=0x7f050037;
         public static final int request_location_updates_in_progress=0x7f05002f;
         public static final int resolved=0x7f05002b;
+        public static final int send_database=0x7f050038;
         public static final int start_updates=0x7f050030;
         public static final int stop_updates=0x7f050031;
         public static final int unknown=0x7f050032;

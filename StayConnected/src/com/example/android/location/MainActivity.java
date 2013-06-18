@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
@@ -329,6 +331,11 @@ public class MainActivity extends FragmentActivity implements
     public void readDatabase(View v) {
     	Intent in = new Intent(this, DatabaseActivity.class);
     	startActivityForResult(in, REQUEST_CODE);
+    }
+    
+    public void sendDatabase(View v) {
+    	Intent i = new Intent(this, SendActivity.class);
+        this.startService(i);
     }
 
     /**
