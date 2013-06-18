@@ -3,14 +3,11 @@ package com.example.android.skeletonapp;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.Set;
 import java.util.UUID;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -92,7 +89,7 @@ public class client implements Runnable{
 	public void run() {
 		// TODO Auto-generated method stub
 		stop = 0;
-		Log.d("Debug","Network begin method\n");
+		Log.d("Debug","Client begin method\n");
 		myAdapter = BluetoothAdapter.getDefaultAdapter();
         if (myAdapter == null) {
         	mEditor.append("\nBluetooth wordt niet gesupport. Functionaliteit wordt minder.\n");
@@ -132,16 +129,8 @@ public class client implements Runnable{
         //wordt voor een verlengde tijd waarneembaar
         discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 0);
         context.startActivity(discoverableIntent);
-        context.unregisterReceiver(mReceiver);
-        myAdapter.cancelDiscovery();
+        //context.unregisterReceiver(mReceiver);
+        //myAdapter.cancelDiscovery();
         connect_to_server();
-		
 	}
-	
-	
-
-
-	
-	
-	
 }

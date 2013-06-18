@@ -169,9 +169,9 @@ UUID.fromString("4fdabc30-cf4e-11e2-8b8b-0800200c9a66");
         	mEditor.append("\nBluetooth wordt niet gesupport. Functionaliteit wordt minder.\n");
         } 
         //StayC wordt toegevoegd aan de bluetooth naam
-        String deviceName = myAdapter.getName();
-        deviceName = deviceName + "StayC";
-        myAdapter.setName(deviceName);
+        //String deviceName = myAdapter.getName();
+        //deviceName = deviceName + "StayC";
+        //myAdapter.setName(deviceName);
         //als app afsluit haal StayC van de naam af, nog te doen
         if (!myAdapter.isEnabled()) {
             //Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
