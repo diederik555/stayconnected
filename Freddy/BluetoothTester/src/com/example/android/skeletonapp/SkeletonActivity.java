@@ -50,7 +50,7 @@ public class SkeletonActivity extends Activity {
     private EditText blueApparaten;
     public BluetoothAdapter myAdapter;
     public Network networkComponent;
-    
+    public client clientThread; 
     public SkeletonActivity() {
     }
 
@@ -70,12 +70,16 @@ public class SkeletonActivity extends Activity {
         // Hook up button presses to the appropriate event handler.
         ((Button) findViewById(R.id.back)).setOnClickListener(mBackListener);
         ((Button) findViewById(R.id.clear)).setOnClickListener(mClearListener);
-        networkComponent = new Network(this);
+        Thread networkComponent = new Thread(new Network(this));
     	if(networkComponent != null) {
-    		networkComponent.begin();
+    		networkComponent.start();
     		Log.d("Debug","Gets to run network\n");
     	}
-    	
+    	Thread clientThread = new Thread(new client(this));
+    	if(clientThread != null) {
+    		clientThread.start();
+    		Log.d("Debug","Gets to run client\n");
+    	}
         mEditor.setText(getText(R.string.main_label));
         //blueApparaten.setText("SOMETHiNG\n");
         //blueApparaten.setText(getText(R.string.main_label));

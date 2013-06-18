@@ -19,7 +19,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.EditText;
 /**
@@ -31,7 +30,7 @@ in plaats van bytes, char buffer gebruiken
 
 
 
-public class Network extends Thread{
+public class Network implements Runnable{
 /**
  * Zet bluetooth connectie op
  * Bluetooth broadcast
@@ -44,10 +43,10 @@ public class Network extends Thread{
 	public BluetoothAdapter myAdapter;
 	private Context context;
 	private BluetoothServerSocket serverSocket;
-	private BluetoothSocket sock,sock_client;
+	private BluetoothSocket sock;
 	private BluetoothDevice myDevice;
-	private InputStream in,in_client;
-	private OutputStream out,out_client;
+	private InputStream in;
+	private OutputStream out;
 	private int stop;
 	private UUID MY_UUID =
 UUID.fromString("4fdabc30-cf4e-11e2-8b8b-0800200c9a66");
@@ -56,69 +55,26 @@ UUID.fromString("4fdabc30-cf4e-11e2-8b8b-0800200c9a66");
 	
 	
 	public Network(Context context) {
+		
 		//this.main = main;
 		this.context = context;
-        /**
-        in vernietigen
-        myAdapter.cancelDiscovery();
-        unregisterReceiver(mReceiver);
-        */
+        
 
 	}
-
+	/**
+    in vernietigen
+    myAdapter.cancelDiscovery();
+    unregisterReceiver(mReceiver);
+    */
 
 	public void begin(){
-		stop = 0;
-		Log.d("Debug","Network begin method\n");
-		myAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (myAdapter == null) {
-        	mEditor.append("\nBluetooth wordt niet gesupport. Functionaliteit wordt minder.\n");
-        } 
-        //StayC wordt toegevoegd aan de bluetooth naam
-        String deviceName = myAdapter.getName();
-        deviceName = deviceName + "StayC";
-        myAdapter.setName(deviceName);
-        //als app afsluit haal StayC van de naam af, nog te doen
-        if (!myAdapter.isEnabled()) {
-            //Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            //startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-        	myAdapter.enable();
-        }
-        if (myAdapter.isDiscovering()) {
-            myAdapter.cancelDiscovery();
-        }
+		
+		
         
-        myAdapter.startDiscovery();
-        Set<BluetoothDevice> devices = myAdapter.getBondedDevices();
-        if(devices.size()>0){
-          for (BluetoothDevice device : devices) {
-        	  //sla hier de device namen op, nog te doen
-        	  //blueApparaten.append("\n Paired devices found:"+device.getName() + " " + device.getAddress());
-        	  Log.d("Test", "\n Paired devices found:"+device.getName() + " " + device.getAddress());
-          }
-          
-        }
-        else{
-        	//blueApparaten.append("\nNo paired devices found.");
-        	Log.d("Test", "No paired devices found\n");
-        }
-        //zoek andere apparaten
-        
-        
-        IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
-        context.registerReceiver(mReceiver, filter);
-        
-        //wordt zelf waarneembaar
-        Intent discoverableIntent = new
-        Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-        //wordt voor een verlengde tijd waarneembaar
-        discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 0);
-        context.startActivity(discoverableIntent); 
-        run_server();
 	}
 
 	
-	private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
+	public BroadcastReceiver mReceiver = new BroadcastReceiver() {
     	@Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
@@ -126,21 +82,17 @@ UUID.fromString("4fdabc30-cf4e-11e2-8b8b-0800200c9a66");
             if (BluetoothDevice.ACTION_FOUND.equals(action)) {
                 // Get the BluetoothDevice object from the Intent
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                if(device.getName().contains("StayC")){
-                	Log.d("StayConnected_01","Found server!\n");
-                	connect_to_server();
-                }
                 // Add the name and address to an array adapter to show in a ListView
                 //blueApparaten.append("\n Device found " + device.getName() + " " + device.getAddress());
-                Log.d("Test","\n Device found " + device.getName() + " " + device.getAddress());
+                Log.d("Debug","\n Server found Device " + device.getName() + " " + device.getAddress());
             }
         }
     }; 
 	
 	public void run_server() {
-        
+        Log.d("Debug","Gets to run_server.\n");
         byte [] input;
-        File outputData = new File("output.txt");
+        //File outputData = new File("output.txt");
         //definieer input grootte
         input = new byte[100];
         try {
@@ -152,10 +104,11 @@ UUID.fromString("4fdabc30-cf4e-11e2-8b8b-0800200c9a66");
 		}
 		try {
 			//luisterd voor 100 seconden
-			sock = serverSocket.accept(100);
+			sock = serverSocket.accept();
+			Log.d("Debug","Accepted connection.\n");
 			in = sock.getInputStream();
 			out = sock.getOutputStream();
-			out = new BufferedOutputStream(new FileOutputStream(outputData));
+			//out = new BufferedOutputStream(new FileOutputStream(outputData));
 			serverSocket.close(); 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -192,22 +145,8 @@ UUID.fromString("4fdabc30-cf4e-11e2-8b8b-0800200c9a66");
 			}*/
 		//} 
 	}
-    public void connect_to_server() {
-		try {
-			sock_client = myDevice.createRfcommSocketToServiceRecord(MY_UUID);
-			sock_client.connect();
-			in_client = sock_client.getInputStream();
-			out_client = sock_client.getOutputStream();
-			Log.d("StayConnected_01","Connectie streams \n");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
-		
-	}
-	public void run_client() {
-
-	}
+    
+	
 	public void kill_server(){
 	   stop = 1;	
 	   try {
@@ -217,6 +156,60 @@ UUID.fromString("4fdabc30-cf4e-11e2-8b8b-0800200c9a66");
 	   	 // TODO Auto-generated catch block
 		 e.printStackTrace();
 	   }
+	}
+
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		stop = 0;
+		Log.d("Debug","Network begin method\n");
+		myAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (myAdapter == null) {
+        	mEditor.append("\nBluetooth wordt niet gesupport. Functionaliteit wordt minder.\n");
+        } 
+        //StayC wordt toegevoegd aan de bluetooth naam
+        String deviceName = myAdapter.getName();
+        deviceName = deviceName + "StayC";
+        myAdapter.setName(deviceName);
+        //als app afsluit haal StayC van de naam af, nog te doen
+        if (!myAdapter.isEnabled()) {
+            //Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            //startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+        	myAdapter.enable();
+        }
+        while(myAdapter.isDiscovering()) {
+        }
+        myAdapter.cancelDiscovery();
+        myAdapter.startDiscovery();
+        Set<BluetoothDevice> devices = myAdapter.getBondedDevices();
+        if(devices.size()>0){
+          for (BluetoothDevice device : devices) {
+        	  //sla hier de device namen op, nog te doen
+        	  //blueApparaten.append("\n Paired devices found:"+device.getName() + " " + device.getAddress());
+        	  Log.d("Test", "\n Paired devices found:"+device.getName() + " " + device.getAddress());
+          }
+          
+        }
+        else{
+        	//blueApparaten.append("\nNo paired devices found.");
+        	Log.d("Test", "No paired devices found\n");
+        }
+        //zoek andere apparaten
+        
+        
+        IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
+        context.registerReceiver(mReceiver, filter);
+        
+        //wordt zelf waarneembaar
+        Intent discoverableIntent = new
+        Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+        //wordt voor een verlengde tijd waarneembaar
+        discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 0);
+        context.startActivity(discoverableIntent);
+        context.unregisterReceiver(mReceiver);
+        myAdapter.cancelDiscovery();
+        run_server();
 	}
 	
 }
