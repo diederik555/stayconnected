@@ -21,8 +21,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
