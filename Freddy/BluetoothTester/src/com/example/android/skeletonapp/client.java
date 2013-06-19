@@ -13,6 +13,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Parcel;
 import android.util.Log;
 import android.widget.EditText;
 
@@ -30,7 +31,7 @@ public class client implements Runnable{
 	private InputStream in;
 	private OutputStream out;
 	private UUID MY_UUID =
-			UUID.fromString("4fdabc30-cf4e-11e2-8b8b-0800200c9a66");
+			UUID.fromString("04c6093b-0000-1000-8000-00805f9b34fb");
 	int stop;
 	public client(Context context){
 		this.context = context;
@@ -55,6 +56,7 @@ public class client implements Runnable{
 	
     public void connect_to_server() {
     	Log.d("Debug","Comes to connect_to_server.\n");
+    	while(true){
 		try {
 			String addr = myAdapter.getAddress();
 			myDevice = myAdapter.getRemoteDevice(addr);
@@ -74,6 +76,7 @@ public class client implements Runnable{
 			}*/
 			BluetoothSocket tmp = myDevice.createRfcommSocketToServiceRecord(MY_UUID);
 			sock_client = tmp;
+			//Parcel testinguuid = myDevice.getUuids();
 			sock_client.connect();
 			Log.d("Debug","Device is connected.\n");
 			in = sock_client.getInputStream();
@@ -82,7 +85,7 @@ public class client implements Runnable{
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}	
+		}	}
 		
 	}
 	@Override

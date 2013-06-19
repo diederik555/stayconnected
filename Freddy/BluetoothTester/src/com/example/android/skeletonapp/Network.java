@@ -49,7 +49,7 @@ public class Network implements Runnable{
 	private OutputStream out;
 	private int stop;
 	private UUID MY_UUID =
-UUID.fromString("4fdabc30-cf4e-11e2-8b8b-0800200c9a66");
+UUID.fromString("04c6093b-0000-1000-8000-00805f9b34fb");
 	//random string
 	
 	
@@ -178,9 +178,10 @@ UUID.fromString("4fdabc30-cf4e-11e2-8b8b-0800200c9a66");
             //startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
         	myAdapter.enable();
         }
-        while(myAdapter.isDiscovering()) {
+        if(myAdapter.isDiscovering()) {
+        	myAdapter.cancelDiscovery();
         }
-        myAdapter.cancelDiscovery();
+        
         myAdapter.startDiscovery();
         Set<BluetoothDevice> devices = myAdapter.getBondedDevices();
         if(devices.size()>0){
