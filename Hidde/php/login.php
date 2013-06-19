@@ -1,7 +1,8 @@
 <?php
 
 	#Setup variables
-	$firstname = $_POST["FirstNameToSearch"];
+	$location = $_POST["Location"];
+	$account = $_POST["Account"];
 
 	#Avoid SQL injection attacks
 	//$firstname = mysql_real_escape_string($firstname);
@@ -17,7 +18,7 @@
 	mysql_select_db("db30984_stayc", $con);
 
 	#Get the user details from the database
-	$userdetails = mysql_query("INSERT INTO testdatabase (user, location) VALUES ('$firstname', 'testlocatie')");
+	$userdetails = mysql_query("INSERT INTO testdatabase (user, location) VALUES ('$account', '$location')");
 
 	#Catch any errors
 	if (!$userdetails) {
