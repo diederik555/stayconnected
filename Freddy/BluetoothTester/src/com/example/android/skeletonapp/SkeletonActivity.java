@@ -16,7 +16,15 @@
 
 package com.example.android.skeletonapp;
 //import java.util.Set;
+import java.util.ArrayList;
+import java.util.Set;
+
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 //import android.bluetooth.BluetoothDevice;
 //import android.content.Context;
 //import android.content.Intent;
@@ -48,9 +56,9 @@ public class SkeletonActivity extends Activity {
     static final public int REQUEST_ENABLE_BT = 0;
     private EditText mEditor;
     private EditText blueApparaten;
-    public BluetoothAdapter myAdapter;
-    public Network networkComponent;
-    public client clientThread; 
+    public static BluetoothAdapter myAdapter;
+    public static ArrayList<String> Adresses = new ArrayList<String>();
+    public client clientThread;
     public SkeletonActivity() {
     }
 
@@ -70,16 +78,62 @@ public class SkeletonActivity extends Activity {
         // Hook up button presses to the appropriate event handler.
         ((Button) findViewById(R.id.back)).setOnClickListener(mBackListener);
         ((Button) findViewById(R.id.clear)).setOnClickListener(mClearListener);
+        myAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (myAdapter == null) {
+        	mEditor.append("\nBluetooth wordt niet gesupport. Functionaliteit wordt minder.\n");
+        } 
+        //StayC wordt toegevoegd aan de bluetooth naam
+        //String deviceName = myAdapter.getName();
+        //deviceName = deviceName + "StayC";
+        //myAdapter.setName(deviceName);
+        //als app afsluit haal StayC van de naam af, nog te doen
+        if (!myAdapter.isEnabled()) {
+            //Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            //startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+        	myAdapter.enable();
+        }
+
+        myAdapter.startDiscovery();
+        Set<BluetoothDevice> devices = myAdapter.getBondedDevices();
+        if(devices.size()>0){
+          for (BluetoothDevice device : devices) {
+        	  //sla hier de device namen op, nog te doen
+        	  //blueApparaten.append("\n Paired devices found:"+device.getName() + " " + device.getAddress());
+        	  Log.d("Test", "\n Paired devices found:"+device.getName() + " " + device.getAddress());
+        	  
+          }
+          
+        }
+        else{
+        	//blueApparaten.append("\nNo paired devices found.");
+        	Log.d("Test", "No paired devices found\n");
+        }
+        //zoek andere apparaten
         Thread networkComponent = new Thread(new Network(this));
     	if(networkComponent != null) {
     		networkComponent.start();
     		Log.d("Debug","Gets to run network\n");
     	}
-    	Thread clientThread = new Thread(new client(this));
+    	clientThread = new client(this);
     	if(clientThread != null) {
-    		clientThread.start();
+    		//clientThread.start();
     		Log.d("Debug","Gets to run client\n");
     	}
+        
+        IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
+        filter.addAction(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
+        registerReceiver(mReceiver, filter);
+        
+        //wordt zelf waarneembaar
+        Intent discoverableIntent = new
+        Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+        //wordt voor een verlengde tijd waarneembaar
+        discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 0);
+        startActivity(discoverableIntent);
+        //context.unregisterReceiver(mReceiver);
+        
+        
+    	
         mEditor.setText(getText(R.string.main_label));
         //blueApparaten.setText("SOMETHiNG\n");
         //blueApparaten.setText(getText(R.string.main_label));
@@ -159,5 +213,33 @@ public class SkeletonActivity extends Activity {
             mEditor.setText("");
         }
     };
-    
+    public BroadcastReceiver mReceiver = new BroadcastReceiver() {
+    	@Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            // When discovery finds a device
+            if (BluetoothDevice.ACTION_FOUND.equals(action)) {
+                // Get the BluetoothDevice object from the Intent
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                // Add the name and address to an array adapter to show in a ListView
+                //blueApparaten.append("\n Device found " + device.getName() + " " + device.getAddress());
+                Log.d("Debug","\n Server found Device " + device.getName() + " " + device.getAddress());
+                Adresses.add(device.getAddress());
+                String value = device.getAddress();
+                myAdapter.cancelDiscovery();
+                Log.d("Debug","Cancel discovery");
+                for (String adress : Adresses)
+	        	{
+	        		clientThread.connect_to_server(adress);
+	        	}		 
+                
+                
+            }
+            else if(BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)){
+            	myAdapter = BluetoothAdapter.getDefaultAdapter();
+            	Log.d("Debug","Start discovery again.\n");
+            	myAdapter.startDiscovery();
+            }
+        }
+    }; 
 }
