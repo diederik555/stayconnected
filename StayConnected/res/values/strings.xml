@@ -16,10 +16,10 @@
 -->
 <resources>
     <!-- Application identifiers -->
-    <string name="app_name">Location Updates</string>
-    <string name="app_tag">LocationUpdates</string>
+    <string name="app_name">Stay Connected</string>
+    <string name="app_tag">StayConnected</string>
     <string name="app_description">
-        Displays current address and current or updated location using Location Services
+        Get in touch with like-minded people, stay connected!
     </string>
 
     <!-- User interface labels and strings -->

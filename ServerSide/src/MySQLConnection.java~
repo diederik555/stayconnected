@@ -44,7 +44,7 @@ public class MySQLConnection {
                 String location = rs.getString(2);
 		//get inputid for deletion after done
 		String inputid = rs.getString(3);
-		//System.out.println(inputid);
+		System.out.println(inputid);
                 location = location.substring(1, location.length()-1);
             	String[] locations = location.split(";");
 
