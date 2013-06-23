@@ -23,17 +23,21 @@ import java.util.Locale;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -104,6 +108,29 @@ public class MainActivity extends FragmentActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //check if location services are enabled
+        // Get Location Manager and check for GPS & Network location services
+        LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if(!lm.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
+              !lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+          // Build the alert dialog
+          AlertDialog.Builder builder = new AlertDialog.Builder(this);
+          builder.setTitle("Location Services Not Active");
+          builder.setMessage("Please enable Location Services and GPS");
+          builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+          public void onClick(DialogInterface dialogInterface, int i) {
+            // Show location settings when the user acknowledges the alert dialog
+            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            startActivity(intent);
+            }
+          });
+          Dialog alertDialog = builder.create();
+          alertDialog.setCanceledOnTouchOutside(false);
+          alertDialog.show();
+        }
+        
+        
+        
         // Get handles to the UI view objects
         mLatLng = (TextView) findViewById(R.id.lat_lng);
         mAddress = (TextView) findViewById(R.id.address);

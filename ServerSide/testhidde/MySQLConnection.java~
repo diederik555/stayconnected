@@ -98,8 +98,8 @@ public class MySQLConnection {
             	}
 		//Account {name=hiddehensel@gmail.com, type=com.google}
  		//selecteer stuk tussen = en , 
-		// String oldaccount = inputid;
-		// String realaccount = oldaccount.split(",|=")[1];
+		// String oldaccount = accountname;
+		// accountname = oldaccount.split(",|=")[1];
 
 
 
