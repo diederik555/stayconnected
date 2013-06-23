@@ -31,7 +31,8 @@ public class Comment {
   // Will be used by the ArrayAdapter in the ListView
   @Override
   public String toString() {
-	String comment = "*(" + location + ");(Address[" + address + "])*";
+	  //;(Address[" + address + "])*"; backup, nu niet handig
+	String comment = "*(" + location + ");" + address;
     return comment;
   }
 } 
