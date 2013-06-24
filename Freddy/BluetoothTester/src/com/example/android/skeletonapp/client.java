@@ -46,11 +46,13 @@ public class client implements Runnable{
 		try {
 			
 			myAdapter.cancelDiscovery();
-			myDevice = myAdapter.getRemoteDevice(addres);
+			String host = "A0:F4:50:CB:0A:43";
+			myDevice = myAdapter.getRemoteDevice(host);
 			/*Method m = myDevice.getClass().getMethod("createRfcommSocket", new Class[] {int.class});
 	        BluetoothSocket tmp = null;
             */
-			BluetoothSocket tmp = myDevice.createInsecureRfcommSocketToServiceRecord(MY_UUID);
+			BluetoothSocket tmp = null; 
+			tmp = myDevice.createInsecureRfcommSocketToServiceRecord(MY_UUID);
 			sock_client = tmp;
 			//Parcel testinguuid = myDevice.g
 			sock_client.connect();

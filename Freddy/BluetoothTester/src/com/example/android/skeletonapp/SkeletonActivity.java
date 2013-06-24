@@ -135,6 +135,9 @@ public class SkeletonActivity extends Activity {
         
     	
         mEditor.setText(getText(R.string.main_label));
+        
+        String my = myAdapter.getAddress();
+        Log.d("Debug","My own address is " +my + ".\n");
         //blueApparaten.setText("SOMETHiNG\n");
         //blueApparaten.setText(getText(R.string.main_label));
         
