@@ -96,10 +96,10 @@ public class MySQLConnection {
             			System.out.println(loc);
             		}
             	}
-		//Account {name=hiddehensel@gmail.com, type=com.google}
+		//bij accountName = Account {name=hiddehensel@gmail.com, type=com.google}
  		//selecteer stuk tussen = en , 
-		// String oldaccount = accountName;
-		// accountName = oldaccount.split(",|=")[1];
+		String oldaccount = accountName;
+		accountName = oldaccount.split(",|=")[1];
 
 
 

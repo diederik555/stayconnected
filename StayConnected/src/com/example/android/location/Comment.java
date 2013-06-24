@@ -32,7 +32,7 @@ public class Comment {
   @Override
   public String toString() {
 	  //;(Address[" + address + "])*"; backup, nu niet handig
-	String comment = "*(" + location + ");" + address;
+	String comment =  location + ";" + address;
     return comment;
   }
 } 
