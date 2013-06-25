@@ -7,7 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Statement;
 
-public class MySQLCompare {
+public class MySQLConnection {
 
     public static void main(String[] args) {
 
@@ -103,7 +103,7 @@ public class MySQLCompare {
             	//selecteer stuk tussen = en , 
             	String oldaccount = accountName;
             	accountName = oldaccount.split(",|=")[1];
-		//nu nog hardcoded sex
+            	//nu nog hardcoded sex
             	String testsex = "man";
             	sex = testsex;
             	con.setAutoCommit(false);
@@ -129,7 +129,7 @@ public class MySQLCompare {
                 System.out.println("Committed " + counts.length + " updates");
             }
         } catch (SQLException ex) {
-        	Logger lgr = Logger.getLogger(MySQLCompare.class.getName());
+        	Logger lgr = Logger.getLogger(MySQLConnection.class.getName());
         	lgr.log(Level.SEVERE, ex.getMessage(), ex);
     	} 
         
@@ -151,7 +151,7 @@ public class MySQLCompare {
                     con.close();
                 }
             } catch (SQLException ex) {
-                Logger lgr = Logger.getLogger(MySQLCompare.class.getName());
+                Logger lgr = Logger.getLogger(MySQLConnection.class.getName());
                 lgr.log(Level.WARNING, ex.getMessage(), ex);
             }
         }

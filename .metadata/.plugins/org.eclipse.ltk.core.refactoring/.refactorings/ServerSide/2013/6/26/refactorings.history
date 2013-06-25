@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 2 elements from project &apos;ServerSide&apos;&#x0A;- Original project: &apos;ServerSide&apos;&#x0A;- Original elements:&#x0A;     MySQLCompare.java&#x0A;     SortedToCompare.java" description="Delete elements" element1="/src&lt;{SortedToCompare.java" element2="/src&lt;{MySQLCompare.java" elements="2" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1372149259472" subPackages="false" version="1.0"/>
+</session>
