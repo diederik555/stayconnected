@@ -95,6 +95,7 @@ public class FindLocation {
                 			for(String locs: city) {
                 				if(locs.contains("\",")) {
                 					cit = locs.substring(2, locs.length()-2);
+                					cit = "Leiden";
                 					if(!cits.contains(cit)) {
                 						cits.add(cit.trim());
                 					}
@@ -107,13 +108,15 @@ public class FindLocation {
 					System.out.println(cits);
 					System.out.println(oldcits);
 					
-					con.setAutoCommit(false);
-                    st = con.createStatement();
-                	st.addBatch("UPDATE profiles set cities = '" + cits.toString() + "' WHERE accountName = '" + accountName + "'");
-                	int counts[] = st.executeBatch();
-                	del = con.createStatement();
-                	con.commit();
-                	System.out.println(counts.length + " updates done!");
+					if(oldcits != cits)) {
+						con.setAutoCommit(false);
+	                    st = con.createStatement();
+	                	st.addBatch("UPDATE profiles set cities = '" + cits.toString() + "' WHERE accountName = '" + accountName + "'");
+	                	int counts[] = st.executeBatch();
+	                	del = con.createStatement();
+	                	con.commit();
+	                	System.out.println(counts.length + " updates done!");
+					}
                 }
 	            else {
                 	String sex = sexs;

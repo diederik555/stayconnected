@@ -53,8 +53,8 @@ public class FindLocation {
                 
 	            if (rst.next()) {
 	            	cits.clear();
-                	//String sex = rst.getString(2);
-                	//float activity = Float.valueOf(rst.getString(3));
+                	String sex = rst.getString(2);
+                	float activity = Float.valueOf(rst.getString(3));
                 	String cities = rst.getString(4);
                 	
                 	//System.out.print("Account Name: " + accountName);
@@ -107,13 +107,15 @@ public class FindLocation {
 					System.out.println(cits);
 					System.out.println(oldcits);
 					
-					con.setAutoCommit(false);
-                    st = con.createStatement();
-                	st.addBatch("UPDATE profiles set cities = '" + cits.toString() + "' WHERE accountName = '" + accountName + "'");
-                	int counts[] = st.executeBatch();
-                	del = con.createStatement();
-                	con.commit();
-                	System.out.println(counts.length + " updates done!");
+					if(oldcits.equals(cits)) {
+						con.setAutoCommit(false);
+	                    st = con.createStatement();
+	                	st.addBatch("UPDATE profiles set cities = '" + cits.toString() + "' WHERE accountName = '" + accountName + "'");
+	                	int counts[] = st.executeBatch();
+	                	del = con.createStatement();
+	                	con.commit();
+	                	System.out.println(counts.length + " updates done!");
+					}
                 }
 	            else {
                 	String sex = sexs;
