@@ -81,11 +81,8 @@ public class FindLocation {
                 	cities = cities.substring(1, cities.length()-1);
                 	String[] citss = cities.split(",");
                 	for(String loc: citss) {
-                		String[] times = loc.split(";");
-                		for(String istime: times) {
-	                		if(!cits.contains(istime)) {
-	                			cits.add(istime.trim());
-	                		}
+                		if(!cits.contains(loc)) {
+                			cits.add(loc.trim());
                 		}
                 	}
                 	
@@ -101,6 +98,7 @@ public class FindLocation {
                 					if(!cits.contains(cit)) {
                 						System.out.println("new city found: " + cit);
                 						cits.add(cit.trim());
+                						cits.add("1".trim());
                 					}
                 				}
                 			}
@@ -112,7 +110,7 @@ public class FindLocation {
                 		cits.remove(0);
                 	}
 
-					System.out.println(cits);
+					//System.out.println(cits);
 					
 					con.setAutoCommit(false);
                     st = con.createStatement();
@@ -150,7 +148,8 @@ public class FindLocation {
                 					cit = locs.substring(2, locs.length()-2);
                 					if(!cits.contains(cit)) {
                 						cits.add(cit.trim());
-                						cits.add(";1");
+                						cits.add("1".trim());
+                						System.out.println(cits);
                 					}
                 				}
                 			}
