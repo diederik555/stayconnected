@@ -104,6 +104,8 @@ public class SendActivity extends Service {
 				//strLastName = jsonObject.getString("LastName");
 				//intAge = jsonObject.getInt("Age");
 				//intPoints = jsonObject.getInt("Points");
+				
+				deleteDatabase("locations.db");
 
 			}catch (Exception e){
 				Log.e("ClientServerDemo", "Error:", e);
