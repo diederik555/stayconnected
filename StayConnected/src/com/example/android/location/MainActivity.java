@@ -46,6 +46,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.location.BluetoothActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -107,6 +108,7 @@ public class MainActivity extends FragmentActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+       
 
         //check if location services are enabled
         // Get Location Manager and check for GPS & Network location services
@@ -362,6 +364,7 @@ public class MainActivity extends FragmentActivity implements
     	Intent i = new Intent(this, SendActivity.class);
         this.startService(i);
     }
+   
 
     /**
      * Invoked by the "Get Address" button.
@@ -392,6 +395,10 @@ public class MainActivity extends FragmentActivity implements
             // Start the background task
             (new MainActivity.GetAddressTask(this)).execute(currentLocation);
         }
+    }
+    public void getBluetooth(View v) {
+    	Intent intent = new Intent(this, BluetoothActivity.class);
+    	startActivity(intent);
     }
 
     /**
