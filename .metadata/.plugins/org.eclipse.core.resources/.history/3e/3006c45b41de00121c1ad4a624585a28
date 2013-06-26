@@ -71,6 +71,7 @@ public class FindLocation {
                     URL link;
                 	
                 	link = new URL("http://maps.googleapis.com/maps/api/geocode/json?latlng="+latitude+","+longitude+"&sensor=false");
+                	System.out.println("http://maps.googleapis.com/maps/api/geocode/json?latlng="+latitude+","+longitude+"&sensor=false");
                 	HttpURLConnection connection = (HttpURLConnection)link.openConnection();
                 	connection.setRequestMethod("GET");
                 	connection.connect();
@@ -92,7 +93,7 @@ public class FindLocation {
                 		}
                 	}
                 	
-                	//System.out.println("Old cities: " + cits);
+                	System.out.println("Old cities: " + cits);
                 	
                 	String[] locations = inputStreamString.split("\n");
                 	int index = 1;

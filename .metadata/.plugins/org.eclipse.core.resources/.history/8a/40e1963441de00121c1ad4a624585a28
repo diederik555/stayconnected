@@ -92,8 +92,6 @@ public class FindLocation {
                 		}
                 	}
                 	
-                	//System.out.println("Old cities: " + cits);
-                	
                 	String[] locations = inputStreamString.split("\n");
                 	int index = 1;
                 	for(String loc: locations){

@@ -85,14 +85,12 @@ public class FindLocation {
                 	String[] citss = cities.split(",");
                 	for(String loc: citss) {
                 		if(!cits.contains(loc)) {
-                			//if(time != 0.0) {
-                			//	loc = loc + "(" + time + ")";
-                			//}
+                			if(time != 0.0) {
+                				loc = loc + "(" + time + ")";
+                			}
                 			cits.add(loc.trim());
                 		}
                 	}
-                	
-                	//System.out.println("Old cities: " + cits);
                 	
                 	String[] locations = inputStreamString.split("\n");
                 	int index = 1;
@@ -104,11 +102,10 @@ public class FindLocation {
                 				if(locs.contains("\",")) {
                 					cit = locs.substring(2, locs.length()-2);
                 					if(!cits.contains(cit)) {
-                						System.out.println("new city found: " + cit);
-                						//if(time != 0.0) {
-                            			//	cit = cit + "(" + time + ")";
-                            			//	System.out.println(cit);
-                            			//}
+                						if(time != 0.0) {
+                            				cit = cit + "(" + time + ")";
+                            				System.out.println(cit);
+                            			}
                 						cits.add(cit.trim());
                 					}
                 				}
@@ -127,7 +124,7 @@ public class FindLocation {
                     st = con.createStatement();
                 	st.addBatch("UPDATE profiles set cities = '" + cits.toString() + "' WHERE accountName = '" + accountName + "'");
                 	st.executeBatch();
-                	counts++;
+                	counts++
                 	del = con.createStatement();
                 	
                 	//System.out.println(counts.length + " updates done!");
@@ -165,6 +162,8 @@ public class FindLocation {
                 		}
                 		index++;
                 	}
+
+					System.out.println(cits);
                 	
                 	System.out.println("Creating new profile with account name: " + accountName);
                 	
@@ -179,7 +178,7 @@ public class FindLocation {
             }
 
             con.commit();
-            System.out.println(counts + " updates done!");
+            System.out.println(counts.length + " updates done!");
             
         } catch (SQLException ex) {
         	Logger lgr = Logger.getLogger(MySQLConnection.class.getName());

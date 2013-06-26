@@ -31,8 +31,6 @@ public class FindLocation {
         String password = "stayconnected";
         
         List<String> cits = new ArrayList<String>();
-        float lasttime;
-        int counts = 0;
         
         try {
             con = DriverManager.getConnection(url, user, password);
@@ -40,9 +38,7 @@ public class FindLocation {
             rs = pst.executeQuery();
 
             while (rs.next()) {
-            	cits.clear();
             	String accountName = rs.getString(1);
-            	float time = Float.valueOf(rs.getString(2));
                 float latitude = Float.valueOf(rs.getString(3));
                 float longitude = Float.valueOf(rs.getString(4));
                 String sexs = rs.getString(6);
@@ -56,9 +52,7 @@ public class FindLocation {
                 rst = pstr.executeQuery();
                 
 	            if (rst.next()) {
-	            	lasttime = time;
-	            	//System.out.println(time);
-	            	
+	            	cits.clear();
                 	//String sex = rst.getString(2);
                 	//float activity = Float.valueOf(rst.getString(3));
                 	String cities = rst.getString(4);
@@ -85,14 +79,12 @@ public class FindLocation {
                 	String[] citss = cities.split(",");
                 	for(String loc: citss) {
                 		if(!cits.contains(loc)) {
-                			//if(time != 0.0) {
-                			//	loc = loc + "(" + time + ")";
-                			//}
                 			cits.add(loc.trim());
                 		}
                 	}
                 	
-                	//System.out.println("Old cities: " + cits);
+                	List<String> oldcits = new ArrayList<String>();
+                	oldcits = cits;
                 	
                 	String[] locations = inputStreamString.split("\n");
                 	int index = 1;
@@ -104,11 +96,6 @@ public class FindLocation {
                 				if(locs.contains("\",")) {
                 					cit = locs.substring(2, locs.length()-2);
                 					if(!cits.contains(cit)) {
-                						System.out.println("new city found: " + cit);
-                						//if(time != 0.0) {
-                            			//	cit = cit + "(" + time + ")";
-                            			//	System.out.println(cit);
-                            			//}
                 						cits.add(cit.trim());
                 					}
                 				}
@@ -116,21 +103,17 @@ public class FindLocation {
                 		}
                 		index++;
                 	}
-                	
-                	//if(cits.toString().startsWith("[, ")) {
-                	//	cits.remove(0);
-                	//}
 
-					//System.out.println(cits);
+					System.out.println(cits);
+					System.out.println(oldcits);
 					
 					con.setAutoCommit(false);
                     st = con.createStatement();
                 	st.addBatch("UPDATE profiles set cities = '" + cits.toString() + "' WHERE accountName = '" + accountName + "'");
-                	st.executeBatch();
-                	counts++;
+                	int counts[] = st.executeBatch();
                 	del = con.createStatement();
-                	
-                	//System.out.println(counts.length + " updates done!");
+                	con.commit();
+                	System.out.println(counts.length + " updates done!");
                 }
 	            else {
                 	String sex = sexs;
@@ -165,6 +148,8 @@ public class FindLocation {
                 		}
                 		index++;
                 	}
+
+					System.out.println(cits);
                 	
                 	System.out.println("Creating new profile with account name: " + accountName);
                 	
@@ -172,15 +157,13 @@ public class FindLocation {
                     st = con.createStatement();
                 	st.addBatch("INSERT INTO profiles(accountName, sex, activity, cities) "+
                 			"VALUES('"+accountName+"', '"+sex+"', '"+activity+"', '"+cits.toString()+"')");
-                	st.executeBatch();
-                	counts++;
+                	int counts[] = st.executeBatch();
                 	del = con.createStatement();
+                	con.commit();
+                	
+                	System.out.println("Committed " + counts.length + " updates");
                 }
             }
-
-            con.commit();
-            System.out.println(counts + " updates done!");
-            
         } catch (SQLException ex) {
         	Logger lgr = Logger.getLogger(MySQLConnection.class.getName());
         	lgr.log(Level.SEVERE, ex.getMessage(), ex);

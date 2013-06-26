@@ -92,8 +92,6 @@ public class FindLocation {
                 		}
                 	}
                 	
-                	//System.out.println("Old cities: " + cits);
-                	
                 	String[] locations = inputStreamString.split("\n");
                 	int index = 1;
                 	for(String loc: locations){
@@ -104,7 +102,6 @@ public class FindLocation {
                 				if(locs.contains("\",")) {
                 					cit = locs.substring(2, locs.length()-2);
                 					if(!cits.contains(cit)) {
-                						System.out.println("new city found: " + cit);
                 						//if(time != 0.0) {
                             			//	cit = cit + "(" + time + ")";
                             			//	System.out.println(cit);
