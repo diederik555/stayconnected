@@ -41,6 +41,9 @@ import android.provider.Settings;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -108,8 +111,6 @@ public class MainActivity extends FragmentActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       
-
         //check if location services are enabled
         // Get Location Manager and check for GPS & Network location services
         LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -536,7 +537,6 @@ public class MainActivity extends FragmentActivity implements
         mLocationClient.removeLocationUpdates(this);
         mConnectionState.setText(R.string.location_updates_stopped);
     }
-
     /**
      * An AsyncTask that calls getFromLocation() in the background.
      * The class uses the following generic types:
