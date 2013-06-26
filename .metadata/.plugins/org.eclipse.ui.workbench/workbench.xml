@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="12" version="2.0">
+<workbench progressCount="16" version="2.0">
 <workbenchAdvisor/>
-<window height="768" maximized="true" width="1024" x="65" y="24">
+<window height="877" width="939" x="66" y="24">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -32,13 +32,13 @@
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MySQLConnection.java" partName="MySQLConnection.java" path="/home/diederik/net-centric/workspace/stayconnected/ServerSide/src/MySQLConnection.java" title="MySQLConnection.java" tooltip="ServerSide/src/MySQLConnection.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ServerSide/src/MySQLConnection.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="72" selectionOffset="4829" selectionTopPixel="1718"/>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FindMatch.java" partName="FindMatch.java" path="/home/diederik/net-centric/workspace/stayconnected/ServerSide/src/FindMatch.java" title="FindMatch.java" tooltip="ServerSide/src/FindMatch.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ServerSide/src/FindMatch.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1263" selectionTopPixel="661"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FindLocation.java" partName="FindLocation.java" path="/home/diederik/net-centric/workspace/stayconnected/ServerSide/src/FindLocation.java" title="FindLocation.java" tooltip="ServerSide/src/FindLocation.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FindLocation.java" partName="FindLocation.java" path="/home/diederik/net-centric/workspace/stayconnected/ServerSide/src/FindLocation.java" title="FindLocation.java" tooltip="ServerSide/src/FindLocation.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ServerSide/src/FindLocation.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="6642" selectionTopPixel="1832"/>
+<editorState selectionHorizontalPixel="0" selectionLength="13" selectionOffset="1392" selectionTopPixel="336"/>
 </editor>
 </editors>
 <views>
@@ -107,7 +107,7 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.25940594" ratioLeft="262" ratioRight="748" relationship="2" relative="topLeft"/>
+<info part="org.eclipse.ui.editorss" ratio="0.21693122" ratioLeft="164" ratioRight="592" relationship="2" relative="topLeft"/>
 <info folder="true" part="bottomRight" ratio="0.8116129" ratioLeft="629" ratioRight="146" relationship="4" relative="org.eclipse.ui.editorss">
 <folder appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.TaskList" label="LabelNotFound"/>
@@ -115,7 +115,7 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@5dcc606b" ratio="0.48258063" ratioLeft="374" ratioRight="401" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@5dcc606b" ratio="0.95046854" ratioLeft="710" ratioRight="37" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
@@ -139,160 +139,158 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ServerSide/src/MySQLConnection.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ServerSide/src/FindMatch.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ServerSide/src/FindLocation.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ServerSide/src/MySQLConnection.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ServerSide/src/MySQLConnection.java"/>
 </editors>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="523" y="0"/>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="4654" y="0"/>
 </item>
 <item historyLabel="FindLocation.java" index="1">
+<position info="not_deleted" x="3602" y="173"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="4654" y="0"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="4300" y="0"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="4654" y="0"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="4654" y="0"/>
+</item>
+<item historyLabel="FindLocation.java" index="1">
+<position info="not_deleted" x="2794" y="0"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="3758" y="0"/>
+</item>
+<item historyLabel="FindLocation.java" index="1">
+<position info="not_deleted" x="1601" y="0"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="3758" y="0"/>
+</item>
+<item historyLabel="FindLocation.java" index="1">
+<position info="not_deleted" x="1601" y="0"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="3758" y="0"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="2340" y="0"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="4654" y="0"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="5327" y="0"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="1484" y="0"/>
+</item>
+<item historyLabel="FindLocation.java" index="1">
+<position info="not_deleted" x="1601" y="0"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="1484" y="0"/>
+</item>
+<item historyLabel="FindLocation.java" index="1">
+<position info="not_deleted" x="1601" y="0"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="1484" y="0"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="6150" y="0"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="6206" y="0"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="2162" y="0"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="3313" y="0"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="1981" y="25"/>
+</item>
+<item historyLabel="FindLocation.java" index="1">
+<position info="not_deleted" x="2750" y="0"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="7282" y="251"/>
+</item>
+<item historyLabel="FindLocation.java" index="1">
+<position info="not_deleted" x="8238" y="0"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="7282" y="251"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="3627" y="0"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="4424" y="48"/>
+</item>
+<item historyLabel="FindMatch.java" index="0">
 <position/>
 </item>
-<item historyLabel="FindLocation.java" index="1">
-<position/>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="1875" y="0"/>
 </item>
 <item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="2917" y="0"/>
+<position info="not_deleted" x="6366" y="3"/>
 </item>
-<item historyLabel="MySQLConnection.java" index="0">
-<position info="not_deleted" x="1866" y="542"/>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="1875" y="0"/>
 </item>
-<item historyLabel="FindLocation.java" index="1">
-<position/>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="3056" y="0"/>
 </item>
-<item historyLabel="MySQLConnection.java" index="0">
-<position info="not_deleted" x="1809" y="42"/>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="4473" y="59"/>
 </item>
-<item historyLabel="FindLocation.java" index="1">
-<position/>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="3480" y="0"/>
 </item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="3128" y="0"/>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="3542" y="0"/>
 </item>
-<item historyLabel="FindLocation.java" index="1">
-<position/>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="3680" y="0"/>
 </item>
-<item historyLabel="FindLocation.java" index="1">
-<position/>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="3705" y="0"/>
 </item>
-<item historyLabel="FindLocation.java" index="1">
-<position/>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="3512" y="0"/>
 </item>
-<item historyLabel="FindLocation.java" index="1">
-<position/>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="5156" y="57"/>
 </item>
-<item historyLabel="FindLocation.java" index="1">
-<position/>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="5046" y="0"/>
 </item>
-<item historyLabel="FindLocation.java" index="1">
-<position/>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="5047" y="0"/>
 </item>
-<item historyLabel="FindLocation.java" index="1">
-<position/>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="5020" y="0"/>
 </item>
-<item historyLabel="FindLocation.java" index="1">
-<position/>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="5152" y="0"/>
 </item>
-<item historyLabel="MySQLConnection.java" index="0">
-<position info="not_deleted" x="1741" y="54"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position/>
+<item historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="4342" y="0"/>
 </item>
 <item historyLabel="FindLocation.java" index="1">
-<position/>
+<position info="not_deleted" x="1392" y="13"/>
 </item>
-<item historyLabel="FindLocation.java" index="1">
-<position/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="945" y="0"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="928" y="4"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="945" y="0"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="3144" y="0"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="3170" y="0"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="3319" y="0"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="4395" y="0"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="4242" y="0"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="3208" y="0"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="3215" y="43"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="4674" y="0"/>
-</item>
-<item historyLabel="MySQLConnection.java" index="0">
-<position info="not_deleted" x="1741" y="54"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="4674" y="0"/>
-</item>
-<item historyLabel="MySQLConnection.java" index="2">
-<position info="not_deleted" x="1741" y="54"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="5310" y="0"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="4282" y="0"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="3565" y="0"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="4539" y="0"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="4266" y="0"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="3580" y="0"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="4324" y="0"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="4199" y="0"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position/>
-</item>
-<item historyLabel="MySQLConnection.java" index="3">
-<position info="not_deleted" x="4829" y="72"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="4902" y="0"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="3646" y="0"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="3713" y="0"/>
-</item>
-<item active="true" historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="3645" y="0"/>
+<item active="true" historyLabel="FindMatch.java" index="0">
+<position info="not_deleted" x="4342" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -314,14 +312,17 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FindLocation.java" tooltip="ServerSide/src/FindLocation.java">
 <persistable path="/ServerSide/src/FindLocation.java"/>
 </file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MySQLConnection.java" tooltip="ServerSide/src/MySQLConnection.java">
+<persistable path="/ServerSide/src/MySQLConnection.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FindMatch.java" tooltip="ServerSide/src/FindMatch.java">
+<persistable path="/ServerSide/src/FindMatch.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MySQLCompare.java" tooltip="ServerSide/src/MySQLCompare.java">
 <persistable path="/ServerSide/src/MySQLCompare.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SortedToCompare.java" tooltip="ServerSide/src/SortedToCompare.java">
 <persistable path="/ServerSide/src/SortedToCompare.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MySQLConnection.java" tooltip="ServerSide/src/MySQLConnection.java">
-<persistable path="/ServerSide/src/MySQLConnection.java"/>
 </file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MySQLConnection.java" tooltip="/home/diederik/net-centric/workspace/stayconnected/ServerSide/src/MySQLConnection.java">
 <persistable uri="file:/home/diederik/net-centric/workspace/stayconnected/ServerSide/src/MySQLConnection.java"/>
