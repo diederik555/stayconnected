@@ -90,8 +90,6 @@ public class FindLocation {
                 						cits.add("1".trim());
                 					} else {
                 						int i = cits.indexOf(cit);
-                						System.out.println("cits: " + cits.get(i));
-                						System.out.println("k: " + cits.get(i+1));
                 						int k = Integer.parseInt(cits.get(i+1));
                 						k++;
                 						cits.set((i+1),String.valueOf(k));
