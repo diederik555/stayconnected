@@ -37,8 +37,6 @@ public class FindLocation {
             con = DriverManager.getConnection(url, user, password);
             pst = con.prepareStatement("SELECT * FROM sortedDatabase");
             rs = pst.executeQuery();
-            
-            con.setAutoCommit(false);
 
             while (rs.next()) {
             	cits.clear();
