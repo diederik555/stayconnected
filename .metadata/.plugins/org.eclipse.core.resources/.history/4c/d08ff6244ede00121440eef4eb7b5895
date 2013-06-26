@@ -108,7 +108,8 @@ public class FindLocation {
                 						System.out.println(k);
                 						k++;
                 						cits.set((i+1),String.valueOf(k));
-                						System.out.println(String.valueOf(k));
+                						System.out.println(String.valueof(k));
+                						
                 					}
                 				}
                 			}

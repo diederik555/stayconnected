@@ -100,15 +100,10 @@ public class FindLocation {
                 						cits.add(cit.trim());
                 						cits.add("1".trim());
                 					} else {
-                						System.out.println("Start");
                 						int i = cits.indexOf(cit);
-                						System.out.println(cit);
-                						System.out.println(i);
                 						int k = Integer.parseInt(cits.get(i+1));
-                						System.out.println(k);
                 						k++;
-                						cits.set((i+1),String.valueOf(k));
-                						System.out.println(String.valueOf(k));
+                						cits.set((i+1),k);
                 					}
                 				}
                 			}
