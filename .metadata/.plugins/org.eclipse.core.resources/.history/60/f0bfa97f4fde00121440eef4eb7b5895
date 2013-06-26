@@ -44,12 +44,14 @@ public class FindLocation {
                 float latitude = Float.valueOf(rs.getString(3));
                 float longitude = Float.valueOf(rs.getString(4));
                 String sexs = rs.getString(6);
-                int inputid = Integer.parseInt(rs.getString(7));
                 
                 pstr = con.prepareStatement("SELECT * FROM profiles WHERE accountName = '" + accountName + "'");
                 rst = pstr.executeQuery();
                 
 	            if (rst.next()) {
+	            	
+                	//String sex = rst.getString(2);
+                	//float activity = Float.valueOf(rst.getString(3));
                 	String cities = rst.getString(4);
                     
                     URL link;
@@ -101,33 +103,17 @@ public class FindLocation {
                 	if(cits.toString().startsWith("[, ")) {
                 		cits.remove(0);
                 	}
-                	
-                	int citsize = cits.size();
-                	int curActivity = 0;
-                	if(citsize <= 1)
-                		curActivity = 0;
-                	else if(citsize < 3)
-                		curActivity = 1;
-                	else if(citsize < 5)
-                		curActivity = 2;
-                	else if(citsize < 7)
-                		curActivity = 3;
-                	else
-                		curActivity = 4;
-                	
 					
 					con.setAutoCommit(false);
                     st = con.createStatement();
                 	st.addBatch("UPDATE profiles set cities = '" + cits.toString() + "' WHERE accountName = '" + accountName + "'");
-                	st.addBatch("UPDATE profiles set activity = '" + curActivity + "' WHERE accountName = '" + accountName + "'");
                 	st.executeBatch();
                 	counts++;
                 	del = con.createStatement();
-                	del.execute("DELETE FROM sortedDatabase WHERE inputid='" + inputid + "'");
                 }
 	            else {
                 	String sex = sexs;
-                	float activity = 0.0f;
+                	float activity = 50.0f;
                 	URL link;
                 	
                 	link = new URL("http://maps.googleapis.com/maps/api/geocode/json?latlng="+latitude+","+longitude+"&sensor=false");
@@ -170,7 +156,6 @@ public class FindLocation {
                 	st.executeBatch();
                 	counts++;
                 	del = con.createStatement();
-                	del.execute("DELETE FROM sortedDatabase WHERE inputid='" + inputid + "'");
                 }
             }
 
@@ -205,5 +190,14 @@ public class FindLocation {
                 lgr.log(Level.WARNING, ex.getMessage(), ex);
             }
         }
+    }
+    
+    public static boolean isInteger(String s) {
+        try { 
+            Integer.parseInt(s); 
+        } catch(NumberFormatException e) { 
+            return false; 
+        }
+        return true;
     }
 }

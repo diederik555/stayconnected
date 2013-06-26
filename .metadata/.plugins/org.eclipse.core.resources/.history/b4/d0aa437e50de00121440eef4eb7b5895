@@ -44,7 +44,6 @@ public class FindLocation {
                 float latitude = Float.valueOf(rs.getString(3));
                 float longitude = Float.valueOf(rs.getString(4));
                 String sexs = rs.getString(6);
-                int inputid = Integer.parseInt(rs.getString(7));
                 
                 pstr = con.prepareStatement("SELECT * FROM profiles WHERE accountName = '" + accountName + "'");
                 rst = pstr.executeQuery();
@@ -118,12 +117,10 @@ public class FindLocation {
 					
 					con.setAutoCommit(false);
                     st = con.createStatement();
-                	st.addBatch("UPDATE profiles set cities = '" + cits.toString() + "' WHERE accountName = '" + accountName + "'");
-                	st.addBatch("UPDATE profiles set activity = '" + curActivity + "' WHERE accountName = '" + accountName + "'");
+                	st.addBatch("UPDATE profiles set cities, activity = '" + cits.toString() + "','" + curActivity + "' WHERE accountName = '" + accountName + "'");
                 	st.executeBatch();
                 	counts++;
                 	del = con.createStatement();
-                	del.execute("DELETE FROM sortedDatabase WHERE inputid='" + inputid + "'");
                 }
 	            else {
                 	String sex = sexs;
@@ -170,7 +167,6 @@ public class FindLocation {
                 	st.executeBatch();
                 	counts++;
                 	del = con.createStatement();
-                	del.execute("DELETE FROM sortedDatabase WHERE inputid='" + inputid + "'");
                 }
             }
 

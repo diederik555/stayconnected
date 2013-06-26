@@ -123,7 +123,6 @@ public class FindLocation {
                 	st.executeBatch();
                 	counts++;
                 	del = con.createStatement();
-                	del.execute("DELETE FROM sortedDatabase WHERE inputid='" + inputid + "'");
                 }
 	            else {
                 	String sex = sexs;
