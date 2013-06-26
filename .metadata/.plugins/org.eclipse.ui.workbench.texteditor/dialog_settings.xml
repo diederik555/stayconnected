@@ -12,10 +12,12 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
-		<item value="false" key="wholeword"/>
+		<item value="true" key="wholeword"/>
 		<item value="add" key="selection"/>
 		<list key="findhistory">
 			<item value="add"/>
+			<item value="con"/>
+			<item value="isInt"/>
 			<item value="\\s"/>
 			<item value="//s"/>
 			<item value="cit"/>

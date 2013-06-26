@@ -70,7 +70,7 @@ public class FindLocation {
                 	cities = cities.substring(1, cities.length()-1);
                 	String[] citss = cities.split(",");
                 	for(String loc: citss) {
-                		if(!cits.contains(loc)) {
+                		if(!cits.contains(loc.trim()) || isInteger(loc.trim())) {
                 			cits.add(loc.trim());
                 		}
                 	}
@@ -84,14 +84,12 @@ public class FindLocation {
                 			for(String locs: city) {
                 				if(locs.contains("\",")) {
                 					cit = locs.substring(2, locs.length()-2);
-                					if(!cits.contains(cit)) {
-                						System.out.println("new city found: " + cit);
+                					if(!cits.contains(cit.trim())) {
+                						System.out.println("new city found: " + cit.trim());
                 						cits.add(cit.trim());
                 						cits.add("1".trim());
                 					} else {
                 						int i = cits.indexOf(cit);
-                						System.out.println("cits: " + cits.get(i));
-                						System.out.println("k: " + cits.get(i+1));
                 						int k = Integer.parseInt(cits.get(i+1));
                 						k++;
                 						cits.set((i+1),String.valueOf(k));
@@ -107,7 +105,7 @@ public class FindLocation {
                 		cits.remove(0);
                 	}
                 	
-                	int citsize = cits.size();
+                	int citsize = cits.size()/2;
                 	int curActivity = 0;
                 	if(citsize <= 1)
                 		curActivity = 0;
@@ -155,7 +153,7 @@ public class FindLocation {
                 			for(String locs: city) {
                 				if(locs.contains("\",")) {
                 					cit = locs.substring(2, locs.length()-2);
-                					if(!cits.contains(cit)) {
+                					if(!cits.contains(cit.trim())) {
                 						cits.add(cit.trim());
                 						cits.add("1".trim());
                 						System.out.println(cits);
@@ -211,5 +209,15 @@ public class FindLocation {
                 lgr.log(Level.WARNING, ex.getMessage(), ex);
             }
         }
+    }
+    
+    public static boolean isInteger(String s) {
+        try { 
+            Integer.parseInt(s); 
+        } catch(NumberFormatException e) { 
+            return false; 
+        }
+        // only got here if we didn't return false
+        return true;
     }
 }
