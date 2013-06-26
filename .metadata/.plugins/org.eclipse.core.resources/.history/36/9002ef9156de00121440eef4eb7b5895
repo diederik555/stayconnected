@@ -98,7 +98,6 @@ public class FindLocation {
                 					}
                 				}
                 			}
-                			break;
                 		}
                 		index++;
                 	}
@@ -162,7 +161,6 @@ public class FindLocation {
                 					}
                 				}
                 			}
-                			break;
                 		}
                 		index++;
                 	}
