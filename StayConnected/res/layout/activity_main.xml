@@ -105,15 +105,6 @@
         android:text="@string/start_updates" />
 
     <Button
-        android:id="@+id/get_address_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/get_location_button"
-        android:layout_centerHorizontal="true"
-        android:onClick="getAddress"
-        android:text="@string/get_address" />
-
-    <Button
         android:id="@+id/stop_updates"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -143,5 +134,24 @@
         android:gravity="center_vertical|center_horizontal"
         android:onClick="sendDatabase"
         android:text="@string/send_database" />
+
+    <Button
+        android:id="@+id/get_address_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/send_database"
+        android:layout_below="@+id/get_location_button"
+        android:onClick="getAddress"
+        android:text="@string/get_address" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/get_location_button"
+        android:layout_marginRight="14dp"
+        android:layout_toLeftOf="@+id/get_address_button"
+        android:onClick="getBluetooth"
+        android:text="Bluetooth" />
 
 </RelativeLayout>

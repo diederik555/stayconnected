@@ -25,13 +25,14 @@ public final class R {
         public static final int logoo=0x7f020001;
     }
     public static final class id {
-        public static final int add=0x7f07000f;
+        public static final int add=0x7f070010;
         public static final int address=0x7f070005;
         public static final int address_progress=0x7f070004;
-        public static final int delete=0x7f070010;
+        public static final int button1=0x7f07000e;
+        public static final int delete=0x7f070011;
         public static final int get_address_button=0x7f07000a;
         public static final int get_location_button=0x7f070008;
-        public static final int group=0x7f07000e;
+        public static final int group=0x7f07000f;
         public static final int label_address=0x7f070003;
         public static final int label_lat_lng=0x7f070001;
         public static final int lat_lng=0x7f070002;
