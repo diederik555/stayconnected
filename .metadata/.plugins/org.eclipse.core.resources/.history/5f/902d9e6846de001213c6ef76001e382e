@@ -89,6 +89,8 @@ public class FindLocation {
                 		}
                 	}
                 	
+                	System.out.println("Old cities: " + cits);
+                	
                 	String[] locations = inputStreamString.split("\n");
                 	int index = 1;
                 	for(String loc: locations){
@@ -112,7 +114,7 @@ public class FindLocation {
                 		cits.remove(0);
                 	}
 
-					System.out.println(cits);
+					//System.out.println(cits);
 					
 					con.setAutoCommit(false);
                     st = con.createStatement();
@@ -150,7 +152,6 @@ public class FindLocation {
                 					cit = locs.substring(2, locs.length()-2);
                 					if(!cits.contains(cit)) {
                 						cits.add(cit.trim());
-                						cits.add(";1");
                 					}
                 				}
                 			}

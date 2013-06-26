@@ -150,7 +150,7 @@ public class FindLocation {
                 					cit = locs.substring(2, locs.length()-2);
                 					if(!cits.contains(cit)) {
                 						cits.add(cit.trim());
-                						cits.add(";1");
+                						cits.add("1");
                 					}
                 				}
                 			}

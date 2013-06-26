@@ -149,8 +149,8 @@ public class FindLocation {
                 				if(locs.contains("\",")) {
                 					cit = locs.substring(2, locs.length()-2);
                 					if(!cits.contains(cit)) {
+                						cit = cit + ";1";
                 						cits.add(cit.trim());
-                						cits.add(";1");
                 					}
                 				}
                 			}

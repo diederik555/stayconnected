@@ -55,6 +55,7 @@ public class FindLocation {
                 
 	            if (rst.next()) {
 	            	//System.out.println(time);
+	            	int time = 0;
 	            	
                 	//String sex = rst.getString(2);
                 	//float activity = Float.valueOf(rst.getString(3));
@@ -83,11 +84,13 @@ public class FindLocation {
                 	for(String loc: citss) {
                 		String[] times = loc.split(";");
                 		for(String istime: times) {
-	                		if(!cits.contains(istime)) {
-	                			cits.add(istime.trim());
+	                		if(!cits.contains(loc)) {
+	                			cits.add(loc.trim());
 	                		}
                 		}
                 	}
+                	
+                	//System.out.println("Old cities: " + cits);
                 	
                 	String[] locations = inputStreamString.split("\n");
                 	int index = 1;
@@ -150,7 +153,6 @@ public class FindLocation {
                 					cit = locs.substring(2, locs.length()-2);
                 					if(!cits.contains(cit)) {
                 						cits.add(cit.trim());
-                						cits.add(";1");
                 					}
                 				}
                 			}

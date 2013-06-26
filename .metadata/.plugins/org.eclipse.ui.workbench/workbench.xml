@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="15" version="2.0">
+<workbench progressCount="16" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="65" y="24">
 <fastViewData fastViewLocation="1024"/>
@@ -38,7 +38,7 @@
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FindLocation.java" partName="FindLocation.java" path="/home/diederik/net-centric/workspace/stayconnected/ServerSide/src/FindLocation.java" title="FindLocation.java" tooltip="ServerSide/src/FindLocation.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ServerSide/src/FindLocation.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4674" selectionTopPixel="231"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4824" selectionTopPixel="1516"/>
 </editor>
 </editors>
 <views>
@@ -141,25 +141,8 @@
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ServerSide/src/MySQLConnection.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ServerSide/src/FindLocation.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ServerSide/src/MySQLConnection.java"/>
 </editors>
-<item historyLabel="FindLocation.java" index="1">
-<position/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="6368" y="0"/>
-</item>
-<item historyLabel="MySQLConnection.java" index="0">
-<position info="not_deleted" x="4569" y="33"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="6763" y="0"/>
-</item>
-<item historyLabel="MySQLConnection.java" index="0">
-<position info="not_deleted" x="4676" y="28"/>
-</item>
-<item historyLabel="FindLocation.java" index="1">
-<position info="not_deleted" x="6763" y="0"/>
-</item>
 <item historyLabel="MySQLConnection.java" index="0">
 <position info="not_deleted" x="4918" y="13"/>
 </item>
@@ -289,8 +272,26 @@
 <item historyLabel="MySQLConnection.java" index="0">
 <position info="not_deleted" x="1741" y="54"/>
 </item>
-<item active="true" historyLabel="FindLocation.java" index="1">
+<item historyLabel="FindLocation.java" index="1">
 <position info="not_deleted" x="4674" y="0"/>
+</item>
+<item historyLabel="MySQLConnection.java" index="2">
+<position info="not_deleted" x="1741" y="54"/>
+</item>
+<item historyLabel="FindLocation.java" index="1">
+<position info="not_deleted" x="5310" y="0"/>
+</item>
+<item historyLabel="FindLocation.java" index="1">
+<position info="not_deleted" x="4282" y="0"/>
+</item>
+<item historyLabel="FindLocation.java" index="1">
+<position info="not_deleted" x="3565" y="0"/>
+</item>
+<item historyLabel="FindLocation.java" index="1">
+<position info="not_deleted" x="4539" y="0"/>
+</item>
+<item active="true" historyLabel="FindLocation.java" index="1">
+<position info="not_deleted" x="4266" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>

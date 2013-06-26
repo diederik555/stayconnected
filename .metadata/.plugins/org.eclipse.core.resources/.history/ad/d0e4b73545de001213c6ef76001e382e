@@ -31,6 +31,7 @@ public class FindLocation {
         String password = "stayconnected";
         
         List<String> cits = new ArrayList<String>();
+        float lasttime;
         int counts = 0;
         
         try {
@@ -41,6 +42,7 @@ public class FindLocation {
             while (rs.next()) {
             	cits.clear();
             	String accountName = rs.getString(1);
+            	float time = Float.valueOf(rs.getString(2));
                 float latitude = Float.valueOf(rs.getString(3));
                 float longitude = Float.valueOf(rs.getString(4));
                 String sexs = rs.getString(6);
@@ -54,6 +56,7 @@ public class FindLocation {
                 rst = pstr.executeQuery();
                 
 	            if (rst.next()) {
+	            	lasttime = time;
 	            	//System.out.println(time);
 	            	
                 	//String sex = rst.getString(2);
@@ -81,13 +84,15 @@ public class FindLocation {
                 	cities = cities.substring(1, cities.length()-1);
                 	String[] citss = cities.split(",");
                 	for(String loc: citss) {
-                		String[] times = loc.split(";");
-                		for(String istime: times) {
-	                		if(!cits.contains(istime)) {
-	                			cits.add(istime.trim());
-	                		}
+                		if(!cits.contains(loc)) {
+                			//if(time != 0.0) {
+                			//	loc = loc + "(" + time + ")";
+                			//}
+                			cits.add(loc.trim());
                 		}
                 	}
+                	
+                	//System.out.println("Old cities: " + cits);
                 	
                 	String[] locations = inputStreamString.split("\n");
                 	int index = 1;
@@ -150,7 +155,6 @@ public class FindLocation {
                 					cit = locs.substring(2, locs.length()-2);
                 					if(!cits.contains(cit)) {
                 						cits.add(cit.trim());
-                						cits.add(";1");
                 					}
                 				}
                 			}
@@ -201,15 +205,5 @@ public class FindLocation {
                 lgr.log(Level.WARNING, ex.getMessage(), ex);
             }
         }
-    }
-    
-    public static boolean isInteger(String s) {
-        try { 
-            Integer.parseInt(s); 
-        } catch(NumberFormatException e) { 
-            return false; 
-        }
-        // only got here if we didn't return false
-        return true;
     }
 }
