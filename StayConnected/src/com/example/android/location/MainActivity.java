@@ -93,7 +93,7 @@ public class MainActivity extends FragmentActivity implements
     private TextView mConnectionState;
     private TextView mConnectionStatus;
     private String sendAddress = null;
-
+    
     // Handle to SharedPreferences for this app
     SharedPreferences mPrefs;
 	
@@ -415,8 +415,13 @@ public class MainActivity extends FragmentActivity implements
         }
     }
     public void getBluetooth(View v) {
-    	Intent intent = new Intent(this, BluetoothActivity.class);
-    	startActivity(intent);
+    	Thread Bluetooth = new Thread(new BluetoothActivity(this));
+    	Bluetooth.start();
+    	
+    	
+    	//Intent i = new Intent(this, BluetoothActivity.class);
+        //this.startService(i);
+    	
     }
 
     /**
