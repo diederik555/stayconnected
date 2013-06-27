@@ -26,7 +26,7 @@
 	#Get the first row of the results
 	$row = mysql_fetch_row($match);
 	if($row)
-    		echo $row[4];
+    		echo $row[1];
 	#Output
 	#echo $row; 
 
