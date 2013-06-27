@@ -28,7 +28,6 @@ public class FindMatch {
         
         List<String> cits = new ArrayList<String>();
         List<String> citsCompare = new ArrayList<String>();
-        List<String> foundMatch = new ArrayList<String>();
         
         float match;
         
@@ -82,7 +81,6 @@ public class FindMatch {
                     String citiesCompare = rsl.getString(4);
                     
                     System.out.println(accountNameCompare);
-                    System.out.println("*************************NEXT*****************************");
                     
                     if(sex.equals(sexCompare)) {
                     	System.out.println("Sex is the same continueing");
@@ -133,17 +131,10 @@ public class FindMatch {
                 	match = (activityPer + overeenkomst) / 2.0f;
                 	System.out.println("match: " + match);
                 	
-                	if(match > 90.0f) {
-                		foundMatch.add("Match found for " + accountName + " and " + accountNameCompare + "!");
-                	}
-                	
                 	System.out.println("");
                 	
                 	//Send to database
                 }
-            }
-            for(String loc: foundMatch) {
-            	System.out.println(loc);
             }
         } catch (SQLException ex) {
         	Logger lgr = Logger.getLogger(MySQLConnection.class.getName());

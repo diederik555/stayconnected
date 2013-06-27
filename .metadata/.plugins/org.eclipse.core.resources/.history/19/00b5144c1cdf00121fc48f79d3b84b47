@@ -142,9 +142,6 @@ public class FindMatch {
                 	//Send to database
                 }
             }
-            for(String loc: foundMatch) {
-            	System.out.println(loc);
-            }
         } catch (SQLException ex) {
         	Logger lgr = Logger.getLogger(MySQLConnection.class.getName());
         	lgr.log(Level.SEVERE, ex.getMessage(), ex);
