@@ -28,6 +28,7 @@ public class FindMatch {
         
         List<String> cits = new ArrayList<String>();
         List<String> citsCompare = new ArrayList<String>();
+        List<String> foundMatch = new ArrayList<String>();
         
         float match;
         
@@ -50,14 +51,17 @@ public class FindMatch {
                 int activity = Integer.parseInt(rs.getString(3));
                 String cities = rs.getString(4);
                 
-                System.out.println(accountName);
+                System.out.println("*************************NEXT*****************************");
+                
+                System.out.println("Comparing with: " + accountName);
+
+                System.out.println("*************************NEXT*****************************");
                 
                 cities = cities.substring(1, cities.length()-1);
             	String[] citss = cities.split(",");
             	for(String loc: citss) {
             		if(isInteger(loc.trim())) {
         				tot += Integer.parseInt(loc.trim());
-        				System.out.println("Tot: " + tot);
         			}
             		if(!cits.contains(loc.trim()) || isInteger(loc.trim())) {
             			cits.add(loc.trim());
@@ -78,23 +82,24 @@ public class FindMatch {
                     String citiesCompare = rsl.getString(4);
                     
                     System.out.println(accountNameCompare);
+                    System.out.println("*************************NEXT*****************************");
                     
                     if(sex.equals(sexCompare)) {
                     	System.out.println("Sex is the same continueing");
+                    	System.out.println("");
                     	match = 0;
-                    	break;
+                    	continue;
                     }
                     
                     float activityPer = 0.0f;
                     activityPer = (1.0f/(Math.abs(activity-activityCompare)+1))*100.0f;
-                    System.out.println("ActivityPer: " + activityPer);
+                    System.out.println("Activity Compare: " + activityPer);
                     
                     citiesCompare = citiesCompare.substring(1, citiesCompare.length()-1);
                 	String[] citssCompare = citiesCompare.split(",");
                 	for(String loc: citssCompare) {
             			if(isInteger(loc.trim())) {
             				totCompare += Integer.parseInt(loc.trim());
-            				System.out.println("TotCompare: " + totCompare);
             			}
                 		if(!citsCompare.contains(loc.trim()) || isInteger(loc.trim())) {
                 			citsCompare.add(loc.trim());
@@ -102,64 +107,43 @@ public class FindMatch {
                 	}
                 	
                 	
-                	float verschil = 0.0f;
-                	float totaal = 0.0f;
-                	float aantal = 0.0f;
+                	float overeenkomst = 0.0f;
                 	
-                	if(citsCompare.size() < cits.size()) {
-                		for(String loc: cits) {
-                			for(String locc: citsCompare) {
-                				if(loc.equalsIgnoreCase(locc) && !isInteger(locc.trim())) {
-                					int i = cits.indexOf(loc);
-                					int k = citsCompare.indexOf(locc);
-            						float n = Float.valueOf(cits.get(i+1));
-            						float m = Float.valueOf(citsCompare.get(k+1));
-            						float citPer = (n*100.0f)/tot;
-            						float citCompPer = (m*100.0f)/totCompare;
-            						verschil += Math.abs(citPer - citCompPer);
-            						aantal++;
-            						totaal += 100;
-                				}
-                				else {
-                					verschil += 100;
-                					aantal++;
-                				}
-                			}
-                		}
-                	}
-                	else {
-                		for(String loc: citsCompare) {
-                			for(String locc: cits) {
-                				if(loc.equalsIgnoreCase(locc) && !isInteger(locc.trim())) {
-                					int i = cits.indexOf(locc);
-                					int k = citsCompare.indexOf(loc);
-            						float n = Float.valueOf(cits.get(i+1));
-            						float m = Float.valueOf(citsCompare.get(k+1));
-            						float citPer = (n*100.0f)/tot;
-            						float citCompPer = (m*100.0f)/totCompare;
-            						verschil += Math.abs(citPer - citCompPer);
-            						aantal++;
-            						totaal += 100;
-                				}
-                				else {
-                					verschil += 100;
-                					aantal++;
-                				}
-                			}
-                		}
-                	}
-                	System.out.println("aantal: " + aantal);
-                	System.out.println("verschil: " + verschil);
-                	System.out.println("totaal: " + totaal);
                 	
-                	float citsPer = (verschil/aantal)/totaal;
-                	System.out.println("citsPer: " + citsPer);
-                	
-                	match = (activityPer + citsPer) / 2;
+            		for(String loc: cits) {
+            			for(String locc: citsCompare) {
+            				if(loc.equalsIgnoreCase(locc) && !isInteger(locc.trim())) {
+            					int i = cits.indexOf(loc);
+            					int k = citsCompare.indexOf(locc);
+        						float n = Float.valueOf(cits.get(i+1));
+        						float m = Float.valueOf(citsCompare.get(k+1));
+        						float citPer = (n*100.0f)/tot;
+        						float citPerComp = (m*100.0f)/totCompare;
+        						if(citPer<citPerComp)
+        							overeenkomst += citPer;
+        						else
+        							overeenkomst += citPerComp;
+        						break;
+            				}
+            			}
+            		}
+            		
+                	System.out.println("City Compare: " + overeenkomst);
+            		
+                	match = (activityPer + overeenkomst) / 2.0f;
                 	System.out.println("match: " + match);
+                	
+                	if(match > 90.0f) {
+                		foundMatch.add("Match found for " + accountName + " and " + accountNameCompare + "!");
+                	}
+                	
+                	System.out.println("");
                 	
                 	//Send to database
                 }
+            }
+            for(String loc: foundMatch) {
+            	System.out.println(loc);
             }
         } catch (SQLException ex) {
         	Logger lgr = Logger.getLogger(MySQLConnection.class.getName());
