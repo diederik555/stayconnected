@@ -144,18 +144,20 @@ public class FindMatch {
             }
 
         	con.setAutoCommit(false);
-        	
+            st = con.createStatement();
+            
+            
             for(String loc: foundMatch) {
             	String[] matches = loc.split(",");
             	for(int i = 0; i < matches.length; i+=2) {
-	            	System.out.println(matches[i] + ";;" + matches[i+1]);
+	            	//System.out.println(matches[i] + ";;" + matches[i+1]);
 	            	
-	                st = con.createStatement();
-	            	st.addBatch("INSERT INTO 'match'(accountName, match, inputid) "+
-	            			"VALUES('"+matches[i]+"', '"+matches[i+1]+"', '')");
-	                st.executeBatch();
+	            	st.addBatch("INSERT INTO matches (accountName, matches) "+
+                			"VALUES('"+ matches[i] +"', '"+ matches[i+1] +"')");
+
             	}
             }
+            st.executeBatch();
             con.commit();
         } catch (SQLException ex) {
         	Logger lgr = Logger.getLogger(MySQLConnection.class.getName());
