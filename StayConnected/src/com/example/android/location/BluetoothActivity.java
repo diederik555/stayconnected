@@ -3,17 +3,15 @@ package com.example.android.location;
 import java.util.ArrayList;
 import java.util.Set;
 
-//import com.example.android.location.SendActivity.DoPOST;
-import android.app.Service;
+
+
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.AsyncTask;
 
-import android.os.IBinder;
 import android.util.Log;
 
 
