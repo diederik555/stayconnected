@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class FindMatch {
+public class php {
 
-    public static void main(String[] args) throws IOException {
+    public static List<String> main(String[] args) throws IOException {
 
         Connection con = null;
         PreparedStatement pst = null;
@@ -134,7 +134,7 @@ public class FindMatch {
                 	System.out.println("match: " + match);
                 	
                 	if(match > 90.0f) {
-                		foundMatch.add(accountName + "," + accountNameCompare);
+                		foundMatch.add("Match found for " + accountName + " and " + accountNameCompare + "!");
                 	}
                 	
                 	System.out.println("");
@@ -142,21 +142,9 @@ public class FindMatch {
                 	//Send to database
                 }
             }
-
-        	con.setAutoCommit(false);
-        	
             for(String loc: foundMatch) {
-            	String[] matches = loc.split(",");
-            	for(int i = 0; i < matches.length; i+=2) {
-	            	System.out.println(matches[i] + ";;" + matches[i+1]);
-	            	
-	                st = con.createStatement();
-	            	st.addBatch("INSERT INTO 'match'(accountName, match, inputid) "+
-	            			"VALUES('"+matches[i]+"', '"+matches[i+1]+"', '')");
-	                st.executeBatch();
-            	}
+            	System.out.println(loc);
             }
-            con.commit();
         } catch (SQLException ex) {
         	Logger lgr = Logger.getLogger(MySQLConnection.class.getName());
         	lgr.log(Level.SEVERE, ex.getMessage(), ex);
