@@ -68,9 +68,7 @@ public class BluetoothActivity implements Runnable{
 	        		  btAdapter.startDiscovery();
 	        		}
 	        		else{
-	        			
 	        			done = 1;
-	        			btAdapter.cancelDiscovery();
 	        		}
 	        		
 	        	}
@@ -88,9 +86,7 @@ public class BluetoothActivity implements Runnable{
 		        	  
 		        	}
 		        	else{
-		        		
 		        		done = 1;
-		        		btAdapter.cancelDiscovery();
 		        	}
 		        	
 	        	}
