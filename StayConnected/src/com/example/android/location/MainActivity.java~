@@ -419,6 +419,9 @@ public class MainActivity extends FragmentActivity implements
     	Bluetooth.start();
     	
     	
+    	//Intent i = new Intent(this, BluetoothActivity.class);
+        //this.startService(i);
+    	
     }
 
     /**
