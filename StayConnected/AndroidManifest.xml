@@ -37,13 +37,17 @@
         android:label="@string/app_name"
         android:description="@string/app_description"
         android:theme="@style/AppTheme" android:logo="@drawable/logoo">
-        <activity
-            android:name="com.example.android.location.MainActivity"
-            android:label="@string/app_name">
+        <activity android:name="SplashActivity"
+                  android:label="@string/app_name"
+                  android:theme="@style/Theme.Transparent" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="MainActivity"
+                  android:label="@string/app_name"
+                  android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
         <activity
             android:name="DatabaseActivity"
@@ -52,6 +56,12 @@
         
         <activity android:name="BluetoothActivity">
         </activity>
+        <activity
+            android:name=".SexActivity"
+            android:label="User Sex" >
+        </activity>
+        
+        
         <service
             android:name="com.example.android.location.ReceiveUpdatesIntentService"
             android:label="@string/app_name"

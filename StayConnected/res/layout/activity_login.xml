@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btnMan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="43dp"
+        android:layout_marginTop="178dp"
+        android:layout_toLeftOf="@+id/btnWoman"
+        android:text="Man" />
+
+    <Button
+        android:id="@+id/btnWoman"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnMan"
+        android:layout_alignBottom="@+id/btnMan"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="62dp"
+        android:text="Woman" />
+
+</RelativeLayout>

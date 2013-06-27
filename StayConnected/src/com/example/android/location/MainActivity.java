@@ -18,6 +18,7 @@ package com.example.android.location;
 
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -41,11 +42,16 @@ import android.provider.Settings;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.location.SessionManager;
 import com.example.android.location.BluetoothActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
@@ -90,7 +96,10 @@ public class MainActivity extends FragmentActivity implements
 
     // Handle to SharedPreferences for this app
     SharedPreferences mPrefs;
-
+	
+    // Session Manager Class
+	SessionManager session;
+	
     // Handle to a SharedPreferences editor
     SharedPreferences.Editor mEditor;
 
@@ -107,9 +116,7 @@ public class MainActivity extends FragmentActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-       
-
+        setContentView(R.layout.activity_main);  
         //check if location services are enabled
         // Get Location Manager and check for GPS & Network location services
         LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -130,6 +137,17 @@ public class MainActivity extends FragmentActivity implements
           alertDialog.setCanceledOnTouchOutside(false);
           alertDialog.show();
         }
+        
+        // Session class instance
+        session = new SessionManager(getApplicationContext());
+        session.checkLogin();
+        //to get the sex yes
+        HashMap<String, String> user = session.getUserDetails();
+        String sex = user.get(SessionManager.KEY_SEX);
+        Log.d("ADebugTag", "Value: " + sex);
+
+
+        
         
         
         
@@ -536,7 +554,6 @@ public class MainActivity extends FragmentActivity implements
         mLocationClient.removeLocationUpdates(this);
         mConnectionState.setText(R.string.location_updates_stopped);
     }
-
     /**
      * An AsyncTask that calls getFromLocation() in the background.
      * The class uses the following generic types:
