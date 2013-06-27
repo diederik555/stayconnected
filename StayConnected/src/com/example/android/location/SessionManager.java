@@ -27,7 +27,7 @@ public class SessionManager {
 	private static final String IS_LOGIN = "IsLoggedIn";
 	
 	// User name (make variable public to access from outside)
-	public static final String KEY_NAME = "name";
+	public static final String KEY_SEX = "sex";
 	
 	// Constructor
 	public SessionManager(Context context){
@@ -44,7 +44,7 @@ public class SessionManager {
 		editor.putBoolean(IS_LOGIN, true);
 		
 		// Storing name in pref
-		editor.putString(KEY_NAME, sex);
+		editor.putString(KEY_SEX, sex);
 		
 		// commit changes
 		editor.commit();
@@ -74,7 +74,7 @@ public class SessionManager {
 	public HashMap<String, String> getUserDetails(){
 		HashMap<String, String> user = new HashMap<String, String>();
 		// user name
-		user.put(KEY_NAME, pref.getString(KEY_NAME, null));
+		user.put(KEY_SEX, pref.getString(KEY_SEX, null));
 		
 		
 		// return user

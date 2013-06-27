@@ -143,7 +143,7 @@ public class MainActivity extends FragmentActivity implements
         session.checkLogin();
         //to get the sex yes
         HashMap<String, String> user = session.getUserDetails();
-        String sex = user.get(SessionManager.KEY_NAME);
+        String sex = user.get(SessionManager.KEY_SEX);
         Log.d("ADebugTag", "Value: " + sex);
 
 
