@@ -151,9 +151,9 @@ public class FindMatch {
 	            	System.out.println(matches[i] + ";;" + matches[i+1]);
 	            	
 	                st = con.createStatement();
-	            	st.addBatch("INSERT INTO 'match'(accountName, match, inputid) "+
+	            	st.addBatch("INSERT INTO match(accountName, match, inputid) "+
 	            			"VALUES('"+matches[i]+"', '"+matches[i+1]+"', '')");
-	                st.executeBatch();
+	            	st.executeBatch();
             	}
             }
             con.commit();
