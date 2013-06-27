@@ -154,4 +154,14 @@
         android:onClick="getBluetooth"
         android:text="Bluetooth" />
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/send_database"
+        android:layout_alignBottom="@+id/send_database"
+        android:layout_toLeftOf="@+id/send_database"
+        android:onClick="getMatch"
+        android:text="Match" />
+
 </RelativeLayout>

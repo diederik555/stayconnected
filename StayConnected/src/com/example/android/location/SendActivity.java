@@ -96,14 +96,7 @@ public class SendActivity extends Service {
 
 				String result = EntityUtils.toString(entity);
 				System.out.println("requestresponse " + result);
-				// Create a JSON object from the request response
-				//JSONObject jsonObject = new JSONObject(result);
 
-				//Retrieve the data from the JSON object
-				//strFirstName = jsonObject.getString("FirstName");
-				//strLastName = jsonObject.getString("LastName");
-				//intAge = jsonObject.getInt("Age");
-				//intPoints = jsonObject.getInt("Points");
 				
 				deleteDatabase("locations.db");
 

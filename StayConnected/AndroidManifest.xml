@@ -62,6 +62,7 @@
         </activity>
         
         
+        
         <service
             android:name="com.example.android.location.ReceiveUpdatesIntentService"
             android:label="@string/app_name"
@@ -71,6 +72,9 @@
 			  android:icon="@string/app_name"></service> 
 		<service
 			  android:name="SendActivity"
+			  android:icon="@string/app_name"></service> 
+		<service
+			  android:name="GetMatch"
 			  android:icon="@string/app_name"></service> 
     </application>
 

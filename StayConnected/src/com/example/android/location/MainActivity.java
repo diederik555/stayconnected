@@ -373,6 +373,11 @@ public class MainActivity extends FragmentActivity implements
             mLatLng.setText(LocationUtils.getLatLng(this, currentLocation));
         }
     }
+    public void getMatch(View v) {
+    	
+       	Intent i = new Intent(this, GetMatch.class);
+       	this.startService(i);
+    }
     
     public void readDatabase(View v) {
     	Intent in = new Intent(this, DatabaseActivity.class);

@@ -27,21 +27,23 @@ public final class R {
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
         public static final int logoo=0x7f020001;
+        public static final int stayc2=0x7f020002;
     }
     public static final class id {
-        public static final int SplashImageView=0x7f090015;
-        public static final int TheSplashLayout=0x7f090014;
-        public static final int add=0x7f090012;
+        public static final int SplashImageView=0x7f090016;
+        public static final int TheSplashLayout=0x7f090015;
+        public static final int add=0x7f090013;
         public static final int address=0x7f090007;
         public static final int address_progress=0x7f090006;
         public static final int btnMan=0x7f090001;
         public static final int btnWoman=0x7f090002;
         public static final int button1=0x7f090010;
-        public static final int delete=0x7f090013;
+        public static final int button2=0x7f090011;
+        public static final int delete=0x7f090014;
         public static final int get_address_button=0x7f09000c;
         public static final int get_location_button=0x7f09000a;
-        public static final int group=0x7f090011;
-        public static final int isSplashEnabled=0x7f090016;
+        public static final int group=0x7f090012;
+        public static final int isSplashEnabled=0x7f090017;
         public static final int label_address=0x7f090005;
         public static final int label_lat_lng=0x7f090003;
         public static final int lat_lng=0x7f090004;
