@@ -86,7 +86,10 @@ public class GetMatch extends Service {
 					System.out.println("requestresponse " + result);
 					if(result != null)
 					{
-						//popup in main met match gevonden met: result
+						Intent i = new Intent(getBaseContext(), MatchPopup.class);
+						i.putExtra("match", result);
+				        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				        startActivity(i);
 					}
 					else
 					{

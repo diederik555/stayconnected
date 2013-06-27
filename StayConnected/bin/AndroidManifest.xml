@@ -60,7 +60,10 @@
             android:name=".SexActivity"
             android:label="User Sex" >
         </activity>
-        
+        <activity 
+            android:name="MatchPopup" 
+            android:theme="@android:style/Theme.Dialog">
+        </activity>
         
         
         <service
