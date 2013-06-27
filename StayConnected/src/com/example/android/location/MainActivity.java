@@ -18,6 +18,7 @@ package com.example.android.location;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -93,7 +94,7 @@ public class MainActivity extends FragmentActivity implements
     private TextView mConnectionState;
     private TextView mConnectionStatus;
     private String sendAddress = null;
-    
+    public ArrayList<String> result;
     // Handle to SharedPreferences for this app
     SharedPreferences mPrefs;
 	
@@ -417,7 +418,6 @@ public class MainActivity extends FragmentActivity implements
     public void getBluetooth(View v) {
     	Thread Bluetooth = new Thread(new BluetoothActivity(this));
     	Bluetooth.start();
-    	
     	
     }
 

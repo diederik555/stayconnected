@@ -3,15 +3,12 @@ package com.example.android.location;
 import java.util.ArrayList;
 import java.util.Set;
 
-
-
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-
 import android.util.Log;
 
 
@@ -20,6 +17,7 @@ import android.util.Log;
 public class BluetoothActivity implements Runnable{
 	Context mContext = null;
 	public int done = 0;
+	static final int SEND_REQUEST = 0;
 	public BluetoothActivity(Context context){
       this.mContext = context;
     }
@@ -27,7 +25,7 @@ public class BluetoothActivity implements Runnable{
 		public int counter = 0;
 		public int MAX_DISCOVERY = 1;
 		
-		private ArrayList<BluetoothDevice> foundDevices = new ArrayList<BluetoothDevice>();
+		public ArrayList<String> foundDevices = new ArrayList<String>();
 	    
 		
 		
@@ -48,7 +46,8 @@ public class BluetoothActivity implements Runnable{
 	            Log.d("Bluetooth", "Found: " + name);
 	            if(foundDevices!=null&&name!=null){
 	              if(!foundDevices.contains(device)){
-	                  foundDevices.add(device);
+	            	  String addedString = device.getAddress();
+	                  foundDevices.add(addedString);
 	              	  Log.d("StayC","Slaat naam device op. " +device +" \n");
 	              }
 	            }
@@ -74,12 +73,9 @@ public class BluetoothActivity implements Runnable{
 	        	}
 	        	else
 	        	{        	
-		        	for (BluetoothDevice dev : foundDevices)
-		        	{
-		        		Log.d("StayC","gets to loop trough devices.\n" + dev);
-		        		//btService.connect(dev);
-		        	}
-		        	foundDevices.clear();
+		        	//stuur foundDevices.
+	        		
+		        	
 		        	if(counter<MAX_DISCOVERY){
 		        	  btAdapter.cancelDiscovery();
 		        	  btAdapter.startDiscovery();
@@ -115,15 +111,20 @@ public class BluetoothActivity implements Runnable{
         Log.d("StayC","Adapter naam is " +btAdapter.getName());
     	btAdapter.setName(newName);
     	Log.d("StayC","Adapter naam wordt " +btAdapter.getName());
+    	String myOwnMac = btAdapter.getAddress();
     	
+    	
+        foundDevices.add(myOwnMac);
     	Set<BluetoothDevice> devices = btAdapter.getBondedDevices();
         if(devices.size()>0){
           for (BluetoothDevice device : devices) {
-        	  foundDevices.add(device);
+        	  String addedString = device.getAddress();
+              foundDevices.add(addedString);
         	  Log.d("StayC", "Paired device found " + device);
           }
         }
-        	
+        
+        //eigen mac
 		Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
 		discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 3600);
 		mContext.startActivity(discoverableIntent);
@@ -137,11 +138,18 @@ public class BluetoothActivity implements Runnable{
 		
 		
 		while(done==0){}
+        
+		foundDevices.clear();
 		mContext.unregisterReceiver(mReceiver);
-           
+		Log.d("StayC","stop thread");
+		Thread.currentThread().stop();
+        
 	
 		
 	}
+	public ArrayList<String> getValue() {
+        return foundDevices;
+    }
 
 	
 }
