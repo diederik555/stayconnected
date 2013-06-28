@@ -138,13 +138,29 @@ public class BluetoothActivity implements Runnable{
 		
 		
 		while(done==0){}
-        
-		foundDevices.clear();
-		mContext.unregisterReceiver(mReceiver);
-		Log.d("StayC","stop thread");
-		Thread.currentThread().stop();
+        clear();
+		
         
 	
+		
+	}
+	public void clear(){
+		foundDevices.clear();
+		
+		Log.d("StayC","stop thread");
+		try {
+			mContext.unregisterReceiver(mReceiver);
+			Thread.currentThread().join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(btAdapter.isDiscovering()){
+			btAdapter.cancelDiscovery();
+		}
+		if(btAdapter.isEnabled()){
+			btAdapter.disable();
+		}
 		
 	}
 	public ArrayList<String> getValue() {
