@@ -84,17 +84,12 @@ public class GetMatch extends Service {
 
 					String result = EntityUtils.toString(entity);
 					System.out.println("requestresponse " + result);
-					if(result != null)
-					{
-						Intent i = new Intent(getBaseContext(), MatchPopup.class);
-						i.putExtra("match", result);
-				        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				        startActivity(i);
-					}
-					else
-					{
-						//popup met helaas nog geen match gevonden
-					}
+
+					Intent i = new Intent(getBaseContext(), MatchPopup.class);
+					i.putExtra("match", result);
+				    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				    startActivity(i);
+
 
 				}catch (Exception e){
 					Log.e("ClientServerDemo", "Error:", e);
